@@ -2,7 +2,7 @@ import os
 import glob
 from PIL import Image
 
-files = glob.glob('/Users/siyeon/Desktop/DSC/timmyRoom/2021-TimmyRoom/image/데자와') # 각자 로컬에 맞게 변경
+files = glob.glob('/Users/yrji/dev/workspace/2021-TimmyRoom/image/pocari/*.jpg') # 각자 로컬에 맞게 변경
 
 for f in files:
     img = Image.open(f)
