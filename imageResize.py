@@ -3,6 +3,7 @@ import glob
 from PIL import Image
 
 files = glob.glob('/Users/siyeon/Desktop/DSC/timmyRoom/2021-TimmyRoom/image/데자와/*.jpg') # 각자 로컬에 맞게 변경
+
 print(files)
 >>>>>>> 87b77e57de62de46fc640aa3e4f3e72097c82d1e
 for f in files:
