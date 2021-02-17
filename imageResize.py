@@ -2,7 +2,7 @@ import os
 import glob
 from PIL import Image
 
-files = glob.glob('/Users/siyeon/Desktop/DSC/timmyRoom/2021-TimmyRoom/image/데자와/*.jpg') # 각자 로컬에 맞게 변경
+files = glob.glob('/Users/siyeon/Desktop/DSC/timmyRoom/핫식스/*.jpg') # 각자 로컬에 맞게 변경
 
 print(files)
 
@@ -13,4 +13,6 @@ for f in files:
     
     
     title, ext = os.path.splitext(f)
-    img_resize.save(title + '_change' + ext)
+  
+    img_resize.save(title +'changed_'+ ext)
+    
