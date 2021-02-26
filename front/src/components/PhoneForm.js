@@ -11,11 +11,14 @@ const PhoneForm = () => {
                     color: '#ffd300',
                 }}
             >
-                전화번호 (010-XXXX-XXXX)
+                전화번호 (XXX-XXXX-XXXX)
             </span>
             <input
                 type="text"
                 placeholder="전화번호를 입력해주세요."
+                pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                maxLength="13"
+                title="XXX-XXXX-XXXX 형식으로 입력해주세요."
                 style={{
                     height: '5rem',
                     marginBottom: '3rem',

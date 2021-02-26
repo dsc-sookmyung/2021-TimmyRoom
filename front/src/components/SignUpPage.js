@@ -14,31 +14,34 @@ const InputBox = styled.div`
     color: #ffd300;
 
     & > input {
-        width: 3rem;
-        height: 3rem;
+        width: 4rem;
+        height: 4rem;
         margin-right: 2.7rem;
     }
 `;
 
 const SignUpPage = () => {
-    const [role, setRole] = useState('developer');
+    const [role, setRole] = useState('nondeveloper');
 
     return (
         <Center>
-            <InputBox>
-                <input type="checkbox" value={role} />
-                개발자입니다.
-            </InputBox>
-            <PhoneForm />
-            <Button
-                style={{
-                    width: '30rem',
-                    height: '6rem',
-                    fontSize: '3rem',
-                }}
-            >
-                회원가입
-            </Button>
+            <form>
+                <InputBox>
+                    <input type="checkbox" value={role} />
+                    개발자입니다.
+                </InputBox>
+                <PhoneForm />
+                <Button
+                    type="submit"
+                    style={{
+                        width: '30rem',
+                        height: '6rem',
+                        fontSize: '3rem',
+                    }}
+                >
+                    회원가입
+                </Button>
+            </form>
         </Center>
     );
 };
