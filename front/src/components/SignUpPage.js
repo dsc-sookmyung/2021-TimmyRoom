@@ -7,16 +7,16 @@ import Button from './Button';
 
 const InputBox = styled.div`
     display: flex;
-    justify-content: center;
     align-items: center;
+    width: 30rem;
     margin-bottom: 3rem;
     font-size: 3.6rem;
     color: #ffd300;
 
     & > input {
-        width: 4rem;
-        height: 4rem;
-        margin-right: 2rem;
+        width: 3rem;
+        height: 3rem;
+        margin-right: 2.7rem;
     }
 `;
 
@@ -31,7 +31,11 @@ const SignUpPage = () => {
             </InputBox>
             <PhoneForm />
             <Button
-                style={{ width: '26rem', height: '5rem', fontSize: '3rem' }}
+                style={{
+                    width: '30rem',
+                    height: '6rem',
+                    fontSize: '3rem',
+                }}
             >
                 회원가입
             </Button>
