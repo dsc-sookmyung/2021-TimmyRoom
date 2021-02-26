@@ -1,13 +1,17 @@
-import { Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Center from './Center';
 import Button from './Button';
 
-const LogOutMain = ({ match }) => {
+const LogOutMain = () => {
     return (
         <Center>
-            <Button>로그인</Button>
-            <Button>회원가입</Button>
+            <Link to="/login" style={{ marginBottom: '2rem' }}>
+                <Button>로그인</Button>
+            </Link>
+            <Link to="/signup">
+                <Button>회원가입</Button>
+            </Link>
         </Center>
     );
 };

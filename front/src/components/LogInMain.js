@@ -1,5 +1,13 @@
+import Center from './Center';
+import Button from './Button';
+
 const LogInMain = () => {
-    return <div>로그인 상태인 메인페이지</div>;
+    return (
+        <Center>
+            <Button>로그인이</Button>
+            <Button>된 상태</Button>
+        </Center>
+    );
 };
 
 export default LogInMain;

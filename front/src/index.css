@@ -10,9 +10,14 @@ html {
     font-size: 10px;
 }
 
+body {
+    background-color: #000;
+}
+
 body,
 button,
 input,
 a {
     font-family: 'Noto Sans KR', sans-serif;
+    text-decoration: none;
 }
