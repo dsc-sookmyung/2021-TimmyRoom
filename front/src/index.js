@@ -4,10 +4,29 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
+import { Provider } from 'react-redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import logger from 'redux-logger';
+import rootReducer from './reducers/index';
+import promiseMiddleware from 'redux-promise';
+import ReduxThunk from 'redux-thunk';
+
+const createStoreWithMMiddleware = applyMiddleware(
+    promiseMiddleware,
+    ReduxThunk,
+)(createStore);
+
 ReactDOM.render(
-    <React.StrictMode>
+    <Provider
+        store={createStoreWithMMiddleware(
+            rootReducer,
+            window.__REDUX_DEVTOOLS_EXTENSION__ &&
+                window.__REDUX_DEVTOOLS_EXTENSION__(),
+        )}
+    >
         <App />
-    </React.StrictMode>,
+    </Provider>,
     document.getElementById('root'),
 );
 

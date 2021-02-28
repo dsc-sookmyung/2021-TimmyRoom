@@ -1,4 +1,6 @@
-const PhoneForm = () => {
+import { useState } from 'react';
+
+const PhoneForm = ({ phone }) => {
     return (
         <div
             style={{ display: 'flex', flexDirection: 'column', width: '30rem' }}
@@ -15,6 +17,7 @@ const PhoneForm = () => {
             </span>
             <input
                 type="text"
+                value={phone}
                 placeholder="전화번호를 입력해주세요."
                 pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                 maxLength="13"
