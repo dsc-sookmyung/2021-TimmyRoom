@@ -5,9 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 import { Provider } from 'react-redux';
-import { createStore, compose, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import logger from 'redux-logger';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers/index';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';

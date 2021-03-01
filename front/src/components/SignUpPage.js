@@ -3,7 +3,6 @@ import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Center from './Center';
-import PhoneForm from './PhoneForm';
 import Button from './Button';
 import { registerAction } from '../reducers/users';
 
@@ -35,13 +34,17 @@ const SignUpPage = () => {
     }, []);
 
     const [phone, setPhone] = useState('');
-    const onChangePhone = useCallback((e) => {
-        setPhone(e.target.value);
-    }, []);
+    const onChangePhone = useCallback(
+        (e) => {
+            setPhone(e.target.value);
+            console.log(phone);
+        },
+        [phone],
+    );
 
     const onSubmitForm = useCallback(() => {
-        dispatch(registerAction(role));
-    }, [role]);
+        dispatch(registerAction({ role, phone }));
+    }, [role, phone]);
 
     return (
         <Center>
@@ -54,7 +57,38 @@ const SignUpPage = () => {
                     />
                     개발자입니다.
                 </InputBox>
-                {/* <PhoneForm phone={phone} onChange={onChangePhone} /> */}
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        width: '30rem',
+                    }}
+                >
+                    <span
+                        style={{
+                            display: 'inline-block',
+                            marginBottom: '0.5rem',
+                            fontSize: '2rem',
+                            color: '#ffd300',
+                        }}
+                    >
+                        전화번호 (XXX-XXXX-XXXX)
+                    </span>
+                    <input
+                        type="text"
+                        value={phone}
+                        onChange={onChangePhone}
+                        placeholder="전화번호를 입력해주세요."
+                        pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                        maxLength="13"
+                        title="XXX-XXXX-XXXX 형식으로 입력해주세요."
+                        style={{
+                            height: '5rem',
+                            marginBottom: '3rem',
+                            fontSize: '2.4rem',
+                        }}
+                    />
+                </div>
                 <Button
                     type="submit"
                     style={{
