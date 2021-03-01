@@ -1,8 +1,11 @@
 package dsc.timmyroom.backend.controller;
 
+
+import dsc.timmyroom.backend.auth.MyUserDetail;
 import dsc.timmyroom.backend.entity.User;
 import dsc.timmyroom.backend.exception.ResourceNotFoundException;
 import dsc.timmyroom.backend.repository.UserRepository;
+import dsc.timmyroom.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,6 +67,5 @@ public class UserController {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
-
 
 }
