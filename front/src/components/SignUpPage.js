@@ -6,6 +6,7 @@ import axios from 'axios';
 import Center from './Center';
 import Button from './Button';
 import { registerAction } from '../reducers/users';
+import ErrorMessage from './ErrorMessage';
 
 const InputBox = styled.div`
     display: flex;
@@ -31,13 +32,16 @@ const SignUpPage = () => {
     const dispatch = useDispatch();
 
     const [role, setRole] = useState('nondeveloper');
-    const onChangeRole = useCallback((e) => {
-        if (e.target.checked) {
-            setRole('developer');
-        } else {
-            setRole('nondeveloper');
-        }
-    }, []);
+    const onChangeRole = useCallback(
+        (e) => {
+            if (e.target.checked) {
+                setRole('developer');
+            } else {
+                setRole('nondeveloper');
+            }
+        },
+        [role],
+    );
 
     const [phone, setPhone] = useState('');
     const onChangePhone = useCallback(
@@ -47,7 +51,21 @@ const SignUpPage = () => {
         [phone],
     );
 
+    // 이미 등록된 사용자 혹은 전화번호인지 확인
+    const [registered, setRegistered] = useState(false);
+
+    const checkRegistered = () => {
+        // 등록된 사용자인지 확인
+        // 예를 들어, 등록된 사용자다.
+        setRegistered(true);
+    };
+
+    const [registerError, setRegisterError] = useState(false);
+
     const onSubmitForm = useCallback(() => {
+        if (registered) {
+            return setRegisterError(true);
+        }
         dispatch(registerAction({ role, phone }));
     }, [role, phone]);
 
@@ -67,6 +85,7 @@ const SignUpPage = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         width: '30rem',
+                        marginBottom: '3rem',
                     }}
                 >
                     <span
@@ -89,13 +108,16 @@ const SignUpPage = () => {
                         title="XXX-XXXX-XXXX 형식으로 입력해주세요."
                         style={{
                             height: '5rem',
-                            marginBottom: '3rem',
                             fontSize: '2.4rem',
                         }}
                     />
+                    {registerError && (
+                        <ErrorMessage>이미 등록된 전화번호입니다.</ErrorMessage>
+                    )}
                 </div>
                 <Button
                     type="submit"
+                    onClick={checkRegistered}
                     style={{
                         width: '30rem',
                         height: '6rem',
