@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 import Center from './Center';
 import Button from './Button';
@@ -22,6 +23,11 @@ const InputBox = styled.div`
 `;
 
 const SignUpPage = () => {
+    const getUserApi = async () => {
+        return axios.get('http://localhost:8080/user');
+    };
+    getUserApi();
+
     const dispatch = useDispatch();
 
     const [role, setRole] = useState('nondeveloper');
@@ -37,7 +43,6 @@ const SignUpPage = () => {
     const onChangePhone = useCallback(
         (e) => {
             setPhone(e.target.value);
-            console.log(phone);
         },
         [phone],
     );
