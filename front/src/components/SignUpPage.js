@@ -62,43 +62,7 @@ const SignUpPage = () => {
 
     const [registerError, setRegisterError] = useState(false);
 
-    const renderSubmitBtn = useCallback(() => {
-        // 중복된 사용자라면, button disable
-        if (registerError) {
-            return (
-                <Button
-                    type="submit"
-                    onClick={checkRegistered}
-                    style={{
-                        width: '30rem',
-                        height: '6rem',
-                        fontSize: '3rem',
-                        backgroundColor: 'rgba(255,211,0,0.5)',
-                    }}
-                    disabled
-                >
-                    회원가입
-                </Button>
-            );
-        }
-
-        return (
-            <Button
-                type="submit"
-                onClick={checkRegistered}
-                style={{
-                    width: '30rem',
-                    height: '6rem',
-                    fontSize: '3rem',
-                }}
-            >
-                회원가입
-            </Button>
-        );
-    }, [registerError]);
-
     const onSubmitForm = useCallback(() => {
-        // 이미 등록된 사용자라면, error 문구 보이게
         if (registered) {
             return setRegisterError(true);
         }
@@ -109,7 +73,11 @@ const SignUpPage = () => {
         <Center>
             <form onSubmit={onSubmitForm}>
                 <InputBox>
-                    <input type="checkbox" value={role} onClick={onChangeRole} />
+                    <input
+                        type="checkbox"
+                        value={role}
+                        onClick={onChangeRole}
+                    />
                     개발자입니다.
                 </InputBox>
                 <div
@@ -143,9 +111,21 @@ const SignUpPage = () => {
                             fontSize: '2.4rem',
                         }}
                     />
-                    {registerError && <ErrorMessage>이미 등록된 전화번호입니다.</ErrorMessage>}
+                    {registerError && (
+                        <ErrorMessage>이미 등록된 전화번호입니다.</ErrorMessage>
+                    )}
                 </div>
-                {renderSubmitBtn()}
+                <Button
+                    type="submit"
+                    onClick={checkRegistered}
+                    style={{
+                        width: '30rem',
+                        height: '6rem',
+                        fontSize: '3rem',
+                    }}
+                >
+                    회원가입
+                </Button>
             </form>
         </Center>
     );

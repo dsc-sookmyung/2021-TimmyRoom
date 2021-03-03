@@ -45,7 +45,7 @@ public class JoinController {
      * @param authentication
      * @return
      */
-    @GetMapping("/")
+    @GetMapping("/welcome")
     public String userAccess(Model model, Authentication authentication) {
         MyUserDetail userDetail = (MyUserDetail)authentication.getPrincipal();
         System.out.println(userDetail.getUsername());
