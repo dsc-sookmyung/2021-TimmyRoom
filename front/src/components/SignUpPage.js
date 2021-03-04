@@ -13,20 +13,24 @@ const InputBox = styled.div`
     align-items: center;
     width: 30rem;
     margin-bottom: 3rem;
-    font-size: 3.6rem;
-    color: #ffd300;
+
     & > input {
         width: 4rem;
         height: 4rem;
         margin-right: 2.7rem;
     }
+
+    & > label {
+        font-size: 3.6rem;
+        color: #ffd300;
+    }
 `;
 
 const SignUpPage = () => {
-    const getUserApi = async () => {
-        return axios.get('http://localhost:8080/user');
-    };
-    getUserApi();
+    // const getUserApi = async () => {
+    //     return axios.get('http://localhost:8080/user');
+    // };
+    // getUserApi();
 
     const dispatch = useDispatch();
 
@@ -59,7 +63,7 @@ const SignUpPage = () => {
         setRegistered(true);
     };
 
-    const [registerError, setRegisterError] = useState(true);
+    const [registerError, setRegisterError] = useState(false);
 
     const renderSubmitBtn = useCallback(() => {
         // 중복된 사용자라면, button disable
@@ -106,10 +110,16 @@ const SignUpPage = () => {
 
     return (
         <Center>
-            <form onSubmit={onSubmitForm}>
+            <form onSubmit={onSubmitForm} aria-label="회원가입 폼입니다.">
                 <InputBox>
-                    <input type="checkbox" value={role} onClick={onChangeRole} />
-                    개발자입니다.
+                    <input
+                        type="checkbox"
+                        id="role"
+                        value={role}
+                        onClick={onChangeRole}
+                        aria-label="개발자라면 체크버튼을 눌러주세요."
+                    />
+                    <label for="role">개발자입니다.</label>
                 </InputBox>
                 <div
                     style={{
@@ -119,7 +129,8 @@ const SignUpPage = () => {
                         marginBottom: '3rem',
                     }}
                 >
-                    <span
+                    <label
+                        for="phone"
                         style={{
                             display: 'inline-block',
                             marginBottom: '0.5rem',
@@ -128,9 +139,10 @@ const SignUpPage = () => {
                         }}
                     >
                         전화번호 (XXX-XXXX-XXXX)
-                    </span>
+                    </label>
                     <input
                         type="text"
+                        id="phone"
                         value={phone}
                         onChange={onChangePhone}
                         placeholder="전화번호를 입력해주세요."
