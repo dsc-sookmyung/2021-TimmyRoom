@@ -21,7 +21,7 @@ const InputBox = styled.div`
     }
 
     & > label {
-        font-size: 3.6rem;
+        font-size: 4rem;
         color: #ffd300;
     }
 `;
@@ -80,7 +80,7 @@ const SignUpPage = () => {
                     }}
                     disabled
                 >
-                    회원가입
+                    회원가입하기
                 </Button>
             );
         }
@@ -95,7 +95,7 @@ const SignUpPage = () => {
                     fontSize: '3rem',
                 }}
             >
-                회원가입
+                회원가입하기
             </Button>
         );
     }, [registerError]);
@@ -112,14 +112,8 @@ const SignUpPage = () => {
         <Center>
             <form onSubmit={onSubmitForm} aria-label="회원가입 폼입니다.">
                 <InputBox>
-                    <input
-                        type="checkbox"
-                        id="role"
-                        value={role}
-                        onClick={onChangeRole}
-                        aria-label="개발자라면 체크버튼을 눌러주세요."
-                    />
-                    <label for="role">개발자입니다.</label>
+                    <input type="checkbox" id="role" value={role} onClick={onChangeRole} />
+                    <label for="role">개발자라면 클릭해주세요.</label>
                 </InputBox>
                 <div
                     style={{
@@ -138,17 +132,18 @@ const SignUpPage = () => {
                             color: '#ffd300',
                         }}
                     >
-                        전화번호 (XXX-XXXX-XXXX)
+                        전화번호를 입력해주세요
                     </label>
                     <input
                         type="text"
                         id="phone"
                         value={phone}
+                        autofocus
                         onChange={onChangePhone}
                         placeholder="전화번호를 입력해주세요."
                         pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                         maxLength="13"
-                        title="XXX-XXXX-XXXX 형식으로 입력해주세요."
+                        title="010-0000-0000 형식으로 입력해주세요."
                         style={{
                             height: '5rem',
                             fontSize: '2.4rem',
