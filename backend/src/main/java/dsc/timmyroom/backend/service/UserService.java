@@ -1,24 +1,29 @@
 package dsc.timmyroom.backend.service;
 
-import dsc.timmyroom.backend.entity.User;
+
 import dsc.timmyroom.backend.repository.UserRepository;
-import dsc.timmyroom.backend.auth.MyUserDetail;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class UserService implements UserDetailsService {
-    private final UserRepository userRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String nickname) throws UsernameNotFoundException {
+        return (UserDetails) userRepository.findUserByNickname(nickname)
+                .orElseThrow(()-> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
+    }
+    /*
     @Transactional
     public void joinUser(User user){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -32,4 +37,5 @@ public class UserService implements UserDetailsService {
         User user = userRepository.findUserByNickname(nickname);
         return new MyUserDetail(user);
     }
+     */
 }

@@ -1,5 +1,6 @@
 package dsc.timmyroom.backend.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -65,4 +66,5 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
 }
