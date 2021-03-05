@@ -51,7 +51,7 @@ public class UserController {
         // 새로운 정보를 받아야함
         user.setNickname(userDetails.getNickname());
         user.setPhone(userDetails.getPhone());
-        user.setRole(userDetails.getPhone());
+        user.setRole(userDetails.getRole());
 
         final User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
