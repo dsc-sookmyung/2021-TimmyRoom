@@ -16,7 +16,7 @@ const LogInPage = () => {
         <Center>
             <h1>로그인</h1>
             <label
-                for="phone"
+                htmlFor="phone"
                 style={{
                     display: 'inline-block',
                     marginBottom: '0.5rem',
@@ -30,7 +30,7 @@ const LogInPage = () => {
                 type="text"
                 id="phone"
                 value={phone}
-                autofocus
+                autoFocus
                 onChange={onChangePhone}
                 placeholder="전화번호를 입력해주세요."
                 pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
