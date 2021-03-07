@@ -4,10 +4,10 @@ const Button = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 32rem;
-    height: 16rem;
+    width: 25rem;
+    height: 13rem;
     border: none;
-    font-size: 55px;
+    font-size: 31px;
     font-weight: 700;
     cursor: pointer;
     color: #000;
@@ -15,6 +15,12 @@ const Button = styled.button`
 
     &:focus {
         outline-color: #ffd300;
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 45rem;
+        height: 20rem;
+        font-size: 55px;
     }
 `;
 

@@ -27,10 +27,10 @@ const InputBox = styled.div`
 `;
 
 const SignUpPage = () => {
-    // const getUserApi = async () => {
-    //     return axios.get('http://localhost:8080/user');
-    // };
-    // getUserApi();
+    const getUserApi = async () => {
+        return axios.get('http://localhost:8080/users');
+    };
+    getUserApi();
 
     const dispatch = useDispatch();
 
@@ -113,7 +113,7 @@ const SignUpPage = () => {
             <form onSubmit={onSubmitForm} aria-label="회원가입 폼입니다.">
                 <InputBox>
                     <input type="checkbox" id="role" value={role} onClick={onChangeRole} />
-                    <label for="role">개발자라면 클릭해주세요.</label>
+                    <label htmlFor="role">개발자라면 클릭해주세요.</label>
                 </InputBox>
                 <div
                     style={{
@@ -124,7 +124,7 @@ const SignUpPage = () => {
                     }}
                 >
                     <label
-                        for="phone"
+                        htmlFor="phone"
                         style={{
                             display: 'inline-block',
                             marginBottom: '0.5rem',
@@ -138,7 +138,7 @@ const SignUpPage = () => {
                         type="text"
                         id="phone"
                         value={phone}
-                        autofocus
+                        autoFocus
                         onChange={onChangePhone}
                         placeholder="전화번호를 입력해주세요."
                         pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
