@@ -7,7 +7,7 @@ const Button = styled.button`
     width: 25rem;
     height: 13rem;
     border: none;
-    font-size: 31px;
+    font-size: 3.1rem;
     font-weight: 700;
     cursor: pointer;
     color: #000;
@@ -20,7 +20,7 @@ const Button = styled.button`
     @media screen and (min-width: 768px) {
         width: 45rem;
         height: 20rem;
-        font-size: 55px;
+        font-size: 5.5rem;
     }
 `;
 
