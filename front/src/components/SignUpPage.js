@@ -14,6 +14,10 @@ const InputBox = styled.div`
     width: 30rem;
     margin-bottom: 3rem;
 
+    @media screen and (min-width: 768px) {
+        width: 50rem;
+    }
+
     & > input {
         width: 4rem;
         height: 4rem;
@@ -21,14 +25,51 @@ const InputBox = styled.div`
     }
 
     & > label {
-        font-size: 4rem;
+        font-size: 2.1rem;
         color: #ffd300;
+
+        @media screen and (min-width: 768px) {
+            font-size: 4rem;
+        }
+    }
+
+    & ~ div {
+        display: flex;
+        flex-direction: column;
+        width: 30rem;
+        margin-bottom: 3rem;
+
+        @media screen and (min-width: 768px) {
+            width: 50rem;
+        }
+
+        & > label {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            color: #ffd300;
+
+            @media screen and (min-width: 768px) {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    & ~ button {
+        width: 30rem;
+        height: 6rem;
+        font-size: 3rem;
+
+        @media screen and (min-width: 768px) {
+            width: 50rem;
+        }
     }
 `;
 
 const SignUpPage = () => {
     const getUserApi = async () => {
-        return axios.get('http://localhost:8080/users');
+        const data = await axios.get('http://localhost:8080/users');
+        console.log(data);
     };
     getUserApi();
 
@@ -73,9 +114,6 @@ const SignUpPage = () => {
                     type="submit"
                     onClick={checkRegistered}
                     style={{
-                        width: '30rem',
-                        height: '6rem',
-                        fontSize: '3rem',
                         backgroundColor: 'rgba(255,211,0,0.5)',
                     }}
                     disabled
@@ -86,15 +124,7 @@ const SignUpPage = () => {
         }
 
         return (
-            <Button
-                type="submit"
-                onClick={checkRegistered}
-                style={{
-                    width: '30rem',
-                    height: '6rem',
-                    fontSize: '3rem',
-                }}
-            >
+            <Button type="submit" onClick={checkRegistered}>
                 회원가입하기
             </Button>
         );
@@ -115,25 +145,8 @@ const SignUpPage = () => {
                     <input type="checkbox" id="role" value={role} onClick={onChangeRole} />
                     <label htmlFor="role">개발자라면 클릭해주세요.</label>
                 </InputBox>
-                <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        width: '30rem',
-                        marginBottom: '3rem',
-                    }}
-                >
-                    <label
-                        htmlFor="phone"
-                        style={{
-                            display: 'inline-block',
-                            marginBottom: '0.5rem',
-                            fontSize: '2rem',
-                            color: '#ffd300',
-                        }}
-                    >
-                        전화번호를 입력해주세요
-                    </label>
+                <div>
+                    <label htmlFor="phone">전화번호를 입력해주세요</label>
                     <input
                         type="text"
                         id="phone"
