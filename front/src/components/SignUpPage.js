@@ -67,12 +67,6 @@ const InputBox = styled.div`
 `;
 
 const SignUpPage = () => {
-    const getUserApi = async () => {
-        const data = await axios.get('http://localhost:8080/users');
-        console.log(data);
-    };
-    getUserApi();
-
     const dispatch = useDispatch();
 
     const [role, setRole] = useState('nondeveloper');
@@ -130,13 +124,67 @@ const SignUpPage = () => {
         );
     }, [registerError]);
 
-    const onSubmitForm = useCallback(() => {
+    const onSubmitForm = useCallback(async () => {
         // 이미 등록된 사용자라면, error 문구 보이게
         if (registered) {
             return setRegisterError(true);
         }
-        dispatch(registerAction({ role, phone }));
+        const nickname = await makeNickname();
+        await dispatch(registerAction({ role, phone, nickname }));
     }, [role, phone]);
+
+    const makeNickname = async () => {
+        const firstNameList = [
+            '달의',
+            '사랑의',
+            '하늘의',
+            '물의',
+            '꽃의',
+            '우주의',
+            '태양의',
+            '별의',
+            '숲의',
+            '그림자의',
+            '천국의',
+            '눈의',
+        ];
+        const secondNameList = [
+            '천사',
+            '증거',
+            '꿈',
+            '마음',
+            '물방울',
+            '요정',
+            '음악',
+            '빛',
+            '결정',
+            '속삭임',
+            '상어',
+            '신탁',
+            '주문',
+            '기도',
+            '고양이',
+            '안내자',
+            '곰',
+            '보호자',
+            '마법',
+            '보물',
+            '영혼',
+            '날개',
+            '선물',
+            '지배자',
+        ];
+        const randomFirstName = firstNameList[Math.floor(Math.random() * firstNameList.length)];
+        const randomSecondName = secondNameList[Math.floor(Math.random() * secondNameList.length)];
+
+        const users = await axios.get('http://localhost:8080/users');
+        let number = users.data.length + 1;
+        if (number < 10) {
+            number = `0${number}`;
+        }
+        const nickname = `${randomFirstName}_${randomSecondName}_${number}`;
+        return nickname;
+    };
 
     return (
         <Center>

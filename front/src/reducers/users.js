@@ -1,6 +1,7 @@
 export const initialState = {
-    role: 'nondeveloper',
+    nickname: '',
     phone: '',
+    role: 'nondeveloper',
 };
 
 // action type
@@ -21,8 +22,9 @@ const reducer = (state = initialState, action) => {
             console.log(action.data);
             return {
                 ...state,
-                role: action.data.role,
+                nickname: action.data.nickname,
                 phone: action.data.phone,
+                role: action.data.role,
             };
         default:
             return state;
