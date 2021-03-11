@@ -30,7 +30,8 @@ public class JoinController {
     public User join(@RequestBody User user) {
         // .phone(passwordEncoder.encode(user.getPhone()))
         //BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        //user.setNickname(user.getNickname());
+        //User findUser = userRepository.findUserByPhone(user.getPhone())
+        user.setNickname(user.getNickname());
         user.setPhone(passwordEncoder.encode(user.getPhone()));
         user.setRole(user.getRole());
         return userRepository.save(user);

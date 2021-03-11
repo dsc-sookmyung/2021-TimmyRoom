@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findUserByNickname(String Nickname);
-
+    Optional<User> findUserByPhone(String Phone);
     // 궁금한거 User랑 Optional<User>의 차이
     // findByNickname 이랑
     // findUserByNickname이랑 뭐가다른지
