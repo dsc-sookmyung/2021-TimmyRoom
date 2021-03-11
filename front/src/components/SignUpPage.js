@@ -124,14 +124,26 @@ const SignUpPage = () => {
         );
     }, [registerError]);
 
-    const onSubmitForm = useCallback(async () => {
-        // 이미 등록된 사용자라면, error 문구 보이게
-        if (registered) {
-            return setRegisterError(true);
-        }
-        const nickname = await makeNickname();
-        await dispatch(registerAction({ role, phone, nickname }));
-    }, [role, phone]);
+    const onSubmitForm = useCallback(
+        async (e) => {
+            // 중복 submit 방지?
+            e.preventDefault();
+
+            // 전화번호 중복 확인
+            // if(){ //중복이라면
+            //     setRegistered(true);
+            // }
+
+            // 중복이라면 경고 메세지 띄우고,
+            if (registered) {
+                setPhone('');
+                return alert('이미 등록된 사용자입니다');
+            }
+            const nickname = await makeNickname();
+            await dispatch(registerAction({ role, phone, nickname }));
+        },
+        [role, phone],
+    );
 
     const makeNickname = async () => {
         const firstNameList = [
@@ -212,7 +224,7 @@ const SignUpPage = () => {
                     />
                     {registerError && <ErrorMessage>이미 등록된 전화번호입니다.</ErrorMessage>}
                 </div>
-                {renderSubmitBtn()}
+                <Button type="submit">회원가입하기</Button>
             </form>
         </Center>
     );
