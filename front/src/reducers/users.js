@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const initialState = {
     nickname: '',
     phone: '',
@@ -7,9 +9,15 @@ export const initialState = {
 // action type
 export const REGISTER_USER = 'REGISTER_USER';
 
+export const registerUser = async (data) => {
+    return (dispatch) => {
+        dispatch(registerAction(data));
+        return axios.post('http://localhost:8080/users', data);
+    };
+};
+
 // action creator
 export const registerAction = (data) => {
-    console.log(data);
     return {
         type: REGISTER_USER,
         data,
@@ -19,7 +27,6 @@ export const registerAction = (data) => {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case REGISTER_USER:
-            console.log(action.data);
             return {
                 ...state,
                 nickname: action.data.nickname,

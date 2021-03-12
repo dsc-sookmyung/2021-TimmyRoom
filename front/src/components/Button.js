@@ -6,10 +6,11 @@ const Button = styled.button`
     align-items: center;
     width: 25rem;
     height: 13rem;
-    border: none;
     font-size: 3.1rem;
     font-weight: 700;
     cursor: pointer;
+    border-radius: 10px;
+    border-color: #ffd300;
     color: #000;
     background-color: #ffd300;
 

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import Center from './Center';
 import Button from './Button';
-import { registerAction } from '../reducers/users';
+import { registerUser } from '../reducers/users';
 import ErrorMessage from './ErrorMessage';
 
 const InputBox = styled.div`
@@ -90,7 +90,7 @@ const SignUpPage = () => {
     );
 
     // 이미 등록된 사용자 혹은 전화번호인지 확인
-    const [registered, setRegistered] = useState(false);
+    const [registered, setRegistered] = useState(true);
 
     const checkRegistered = () => {
         // 등록된 사용자인지 확인
@@ -126,21 +126,18 @@ const SignUpPage = () => {
 
     const onSubmitForm = useCallback(
         async (e) => {
-            // 중복 submit 방지?
-            e.preventDefault();
-
             // 전화번호 중복 확인
             // if(){ //중복이라면
             //     setRegistered(true);
             // }
 
             // 중복이라면 경고 메세지 띄우고,
-            if (registered) {
-                setPhone('');
-                return alert('이미 등록된 사용자입니다');
-            }
+            // if (registered) {
+            //     setPhone('');
+            //     return alert('이미 등록된 사용자입니다. 전화번호를 다시 입력해주십시오.');
+            // }
             const nickname = await makeNickname();
-            await dispatch(registerAction({ role, phone, nickname }));
+            await dispatch(registerUser({ role, phone, nickname }));
         },
         [role, phone],
     );
@@ -220,6 +217,7 @@ const SignUpPage = () => {
                         style={{
                             height: '5rem',
                             fontSize: '2.4rem',
+                            borderRadius: '6px',
                         }}
                     />
                     {registerError && <ErrorMessage>이미 등록된 전화번호입니다.</ErrorMessage>}

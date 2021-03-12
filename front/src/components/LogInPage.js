@@ -39,6 +39,7 @@ const LogInPage = () => {
                 style={{
                     height: '5rem',
                     fontSize: '2.4rem',
+                    borderRadius: '6px',
                 }}
             />
         </Center>
