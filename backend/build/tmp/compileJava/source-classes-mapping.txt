@@ -1,21 +1,23 @@
-dsc/timmyroom/backend/auth/SecurityConfig.java
- dsc.timmyroom.backend.auth.SecurityConfig
-dsc/timmyroom/backend/exception/ResourceNotFoundException.java
- dsc.timmyroom.backend.exception.ResourceNotFoundException
-dsc/timmyroom/backend/entity/User.java
- dsc.timmyroom.backend.entity.User
-dsc/timmyroom/backend/auth/JwtTokenProvider.java
- dsc.timmyroom.backend.auth.JwtTokenProvider
-dsc/timmyroom/backend/auth/MyUserDetail.java
- dsc.timmyroom.backend.auth.MyUserDetail
-dsc/timmyroom/backend/auth/JwtAuthenticationFilter.java
- dsc.timmyroom.backend.auth.JwtAuthenticationFilter
-dsc/timmyroom/backend/BackendApplication.java
- dsc.timmyroom.backend.BackendApplication
 dsc/timmyroom/backend/repository/UserRepository.java
  dsc.timmyroom.backend.repository.UserRepository
 dsc/timmyroom/backend/controller/UserController.java
  dsc.timmyroom.backend.controller.UserController
+dsc/timmyroom/backend/BackendApplication.java
+ dsc.timmyroom.backend.BackendApplication
+dsc/timmyroom/backend/exception/ResourceNotFoundException.java
+ dsc.timmyroom.backend.exception.ResourceNotFoundException
+dsc/timmyroom/backend/auth/MyUserDetail.java
+ dsc.timmyroom.backend.auth.MyUserDetail
+dsc/timmyroom/backend/entity/User.java
+ dsc.timmyroom.backend.entity.User
+dsc/timmyroom/backend/exception/CustomeAuthenticationEntryPoint.java
+ dsc.timmyroom.backend.exception.CustomeAuthenticationEntryPoint
+dsc/timmyroom/backend/auth/JwtAuthenticationFilter.java
+ dsc.timmyroom.backend.auth.JwtAuthenticationFilter
+dsc/timmyroom/backend/auth/JwtTokenProvider.java
+ dsc.timmyroom.backend.auth.JwtTokenProvider
+dsc/timmyroom/backend/auth/SecurityConfig.java
+ dsc.timmyroom.backend.auth.SecurityConfig
 dsc/timmyroom/backend/service/UserService.java
  dsc.timmyroom.backend.service.UserService
 dsc/timmyroom/backend/controller/JoinController.java
