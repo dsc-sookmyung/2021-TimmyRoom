@@ -147,62 +147,8 @@ const SignUpPage = () => {
         //     setPhone('');
         //     return alert('이미 등록된 사용자입니다. 전화번호를 다시 입력해주십시오.');
         // }
-        // const nickname = await makeNickname();
         dispatch(registerUser({ role, phone, nickname }));
     }, [role, phone, nickname]);
-
-    // const makeNickname = async () => {
-    //     const firstNameList = [
-    //         '달의',
-    //         '사랑의',
-    //         '하늘의',
-    //         '물의',
-    //         '꽃의',
-    //         '우주의',
-    //         '태양의',
-    //         '별의',
-    //         '숲의',
-    //         '그림자의',
-    //         '천국의',
-    //         '눈의',
-    //     ];
-    //     const secondNameList = [
-    //         '천사',
-    //         '증거',
-    //         '꿈',
-    //         '마음',
-    //         '물방울',
-    //         '요정',
-    //         '음악',
-    //         '빛',
-    //         '결정',
-    //         '속삭임',
-    //         '상어',
-    //         '신탁',
-    //         '주문',
-    //         '기도',
-    //         '고양이',
-    //         '안내자',
-    //         '곰',
-    //         '보호자',
-    //         '마법',
-    //         '보물',
-    //         '영혼',
-    //         '날개',
-    //         '선물',
-    //         '지배자',
-    //     ];
-    //     const randomFirstName = firstNameList[Math.floor(Math.random() * firstNameList.length)];
-    //     const randomSecondName = secondNameList[Math.floor(Math.random() * secondNameList.length)];
-
-    //     const users = await axios.get('http://localhost:8080/users');
-    //     let number = users.data.length + 1;
-    //     if (number < 10) {
-    //         number = `0${number}`;
-    //     }
-    //     const nickname = `${randomFirstName}_${randomSecondName}_${number}`;
-    //     return nickname;
-    // };
 
     return (
         <Center>
@@ -219,7 +165,6 @@ const SignUpPage = () => {
                         value={nickname}
                         onChange={onChangeNickname}
                         autoFocus
-                        placeholder="닉네임을 입력해주세요."
                         style={{
                             height: '5rem',
                             fontSize: '2.4rem',
@@ -232,7 +177,6 @@ const SignUpPage = () => {
                         id="phone"
                         value={phone}
                         onChange={onChangePhone}
-                        placeholder="전화번호를 입력해주세요."
                         pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                         maxLength="13"
                         title="010-0000-0000 형식으로 입력해주세요."

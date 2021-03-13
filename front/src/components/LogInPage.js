@@ -61,12 +61,12 @@ const LogInPage = () => {
     );
 
     const onSubmitForm = useCallback(() => {
-        dispatch(loginUser({ phone }));
+        dispatch(loginUser({ nickname, phone }));
     }, [phone]);
 
     return (
         <Center>
-            <form onSubmit={onSubmitForm}>
+            <form onSubmit={onSubmitForm} aria-label="로그인 폼입니다.">
                 <LoginBox>
                     <label htmlFor="nickname">닉네임을 입력해주세요</label>
                     <input
@@ -75,7 +75,6 @@ const LogInPage = () => {
                         value={nickname}
                         onChange={onChangeNickname}
                         autoFocus
-                        placeholder="닉네임을 입력해주세요."
                     />
                     <label htmlFor="phone">전화번호를 입력해주세요</label>
                     <input
@@ -83,7 +82,6 @@ const LogInPage = () => {
                         id="phone"
                         value={phone}
                         onChange={onChangePhone}
-                        placeholder="전화번호를 입력해주세요."
                         pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                         maxLength="13"
                         title="010-0000-0000 형식으로 입력해주세요."

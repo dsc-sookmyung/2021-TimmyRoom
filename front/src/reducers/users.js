@@ -12,8 +12,8 @@ export const LOGIN_USER = 'LOGIN_USER';
 
 export const registerUser = async (data) => {
     return (dispatch) => {
+        axios.post('http://localhost:8080/users', data);
         dispatch(registerAction(data));
-        return axios.post('http://localhost:8080/users', data);
     };
 };
 
@@ -27,8 +27,8 @@ export const registerAction = (data) => {
 
 export const loginUser = async (data) => {
     return (dispatch) => {
+        axios.post('http://localhost:8080/login', data);
         dispatch(loginAction(data));
-        // return axios.post()
     };
 };
 
@@ -50,7 +50,7 @@ const reducer = (state = {}, action) => {
             };
         case LOGIN_USER:
             return {
-                ...state,
+                nickname: action.data.nickname,
                 phone: action.data.phone,
             };
         default:
