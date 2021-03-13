@@ -37,7 +37,7 @@ const InputBox = styled.div`
         display: flex;
         flex-direction: column;
         width: 30rem;
-        margin-bottom: 3rem;
+        // margin-bottom: 3rem;
 
         @media screen and (min-width: 768px) {
             width: 50rem;
@@ -52,6 +52,10 @@ const InputBox = styled.div`
             @media screen and (min-width: 768px) {
                 font-size: 3rem;
             }
+        }
+
+        & > input {
+            margin-bottom: 3rem;
         }
     }
 
@@ -79,6 +83,14 @@ const SignUpPage = () => {
             }
         },
         [role],
+    );
+
+    const [nickname, setNickname] = useState('');
+    const onChangeNickname = useCallback(
+        (e) => {
+            setNickname(e.target.value);
+        },
+        [nickname],
     );
 
     const [phone, setPhone] = useState('');
@@ -124,76 +136,73 @@ const SignUpPage = () => {
         );
     }, [registerError]);
 
-    const onSubmitForm = useCallback(
-        async (e) => {
-            // 전화번호 중복 확인
-            // if(){ //중복이라면
-            //     setRegistered(true);
-            // }
+    const onSubmitForm = useCallback(() => {
+        // 전화번호 중복 확인
+        // if(){ //중복이라면
+        //     setRegistered(true);
+        // }
 
-            // 중복이라면 경고 메세지 띄우고,
-            // if (registered) {
-            //     setPhone('');
-            //     return alert('이미 등록된 사용자입니다. 전화번호를 다시 입력해주십시오.');
-            // }
-            const nickname = await makeNickname();
-            await dispatch(registerUser({ role, phone, nickname }));
-        },
-        [role, phone],
-    );
+        // 중복이라면 경고 메세지 띄우고,
+        // if (registered) {
+        //     setPhone('');
+        //     return alert('이미 등록된 사용자입니다. 전화번호를 다시 입력해주십시오.');
+        // }
+        // const nickname = await makeNickname();
+        dispatch(registerUser({ role, phone, nickname }));
+    }, [role, phone, nickname]);
 
-    const makeNickname = async () => {
-        const firstNameList = [
-            '달의',
-            '사랑의',
-            '하늘의',
-            '물의',
-            '꽃의',
-            '우주의',
-            '태양의',
-            '별의',
-            '숲의',
-            '그림자의',
-            '천국의',
-            '눈의',
-        ];
-        const secondNameList = [
-            '천사',
-            '증거',
-            '꿈',
-            '마음',
-            '물방울',
-            '요정',
-            '음악',
-            '빛',
-            '결정',
-            '속삭임',
-            '상어',
-            '신탁',
-            '주문',
-            '기도',
-            '고양이',
-            '안내자',
-            '곰',
-            '보호자',
-            '마법',
-            '보물',
-            '영혼',
-            '날개',
-            '선물',
-            '지배자',
-        ];
-        const randomFirstName = firstNameList[Math.floor(Math.random() * firstNameList.length)];
-        const randomSecondName = secondNameList[Math.floor(Math.random() * secondNameList.length)];
+    // const makeNickname = async () => {
+    //     const firstNameList = [
+    //         '달의',
+    //         '사랑의',
+    //         '하늘의',
+    //         '물의',
+    //         '꽃의',
+    //         '우주의',
+    //         '태양의',
+    //         '별의',
+    //         '숲의',
+    //         '그림자의',
+    //         '천국의',
+    //         '눈의',
+    //     ];
+    //     const secondNameList = [
+    //         '천사',
+    //         '증거',
+    //         '꿈',
+    //         '마음',
+    //         '물방울',
+    //         '요정',
+    //         '음악',
+    //         '빛',
+    //         '결정',
+    //         '속삭임',
+    //         '상어',
+    //         '신탁',
+    //         '주문',
+    //         '기도',
+    //         '고양이',
+    //         '안내자',
+    //         '곰',
+    //         '보호자',
+    //         '마법',
+    //         '보물',
+    //         '영혼',
+    //         '날개',
+    //         '선물',
+    //         '지배자',
+    //     ];
+    //     const randomFirstName = firstNameList[Math.floor(Math.random() * firstNameList.length)];
+    //     const randomSecondName = secondNameList[Math.floor(Math.random() * secondNameList.length)];
 
-        const users = await axios.get('http://localhost:8080/users');
-        let number = users.data.length + 1;
-        if (number < 10) {
-            number = `0${number}`;
-        }
-        const nickname = `${randomFirstName}_${randomSecondName}_${number}`;
-        return nickname;
-    };
+    //     const users = await axios.get('http://localhost:8080/users');
+    //     let number = users.data.length + 1;
+    //     if (number < 10) {
+    //         number = `0${number}`;
+    //     }
+    //     const nickname = `${randomFirstName}_${randomSecondName}_${number}`;
+    //     return nickname;
+    // };
 
     return (
         <Center>
@@ -203,12 +212,25 @@ const SignUpPage = () => {
                     <label htmlFor="role">개발자라면 클릭해주세요.</label>
                 </InputBox>
                 <div>
+                    <label htmlFor="nickname">닉네임을 입력해주세요</label>
+                    <input
+                        type="text"
+                        id="nickname"
+                        value={nickname}
+                        onChange={onChangeNickname}
+                        autoFocus
+                        placeholder="닉네임을 입력해주세요."
+                        style={{
+                            height: '5rem',
+                            fontSize: '2.4rem',
+                            borderRadius: '6px',
+                        }}
+                    />
                     <label htmlFor="phone">전화번호를 입력해주세요</label>
                     <input
                         type="text"
                         id="phone"
                         value={phone}
-                        autoFocus
                         onChange={onChangePhone}
                         placeholder="전화번호를 입력해주세요."
                         pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
