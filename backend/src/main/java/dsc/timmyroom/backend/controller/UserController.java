@@ -51,7 +51,7 @@ public class UserController {
         // 새로운 정보를 받아야함
         user.setNickname(userDetails.getNickname());
         user.setPhone(userDetails.getPhone());
-        user.setRole(userDetails.getPhone());
+        user.setRole(userDetails.getRole());
 
         final User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
@@ -61,7 +61,6 @@ public class UserController {
     public ResponseEntity<Map<String, Boolean>> deleteUser(@PathVariable Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not exist with id" + id));
-
         userRepository.delete(user);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);

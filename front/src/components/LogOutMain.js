@@ -7,10 +7,10 @@ const LogOutMain = () => {
     return (
         <Center>
             <Link to="/login" style={{ marginBottom: '2rem' }}>
-                <Button>로그인</Button>
+                <Button>로그인하러 가기</Button>
             </Link>
             <Link to="/signup">
-                <Button>회원가입</Button>
+                <Button>회원가입하러 가기</Button>
             </Link>
         </Center>
     );

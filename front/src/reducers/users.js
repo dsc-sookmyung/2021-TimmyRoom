@@ -1,16 +1,41 @@
+import axios from 'axios';
+
 export const initialState = {
-    role: 'nondeveloper',
+    isLoggedIn: false,
+    nickname: '',
     phone: '',
+    role: 'nondeveloper',
 };
 
 // action type
 export const REGISTER_USER = 'REGISTER_USER';
+export const LOGIN_USER = 'LOGIN_USER';
+
+export const registerUser = async (data) => {
+    return (dispatch) => {
+        axios.post('http://localhost:8080/users', data);
+        dispatch(registerAction(data));
+    };
+};
 
 // action creator
 export const registerAction = (data) => {
-    console.log(data);
     return {
         type: REGISTER_USER,
+        data,
+    };
+};
+
+export const loginUser = async (data) => {
+    return (dispatch) => {
+        axios.post('http://localhost:8080/login', data);
+        dispatch(loginAction(data));
+    };
+};
+
+export const loginAction = (data) => {
+    return {
+        type: LOGIN_USER,
         data,
     };
 };
@@ -18,10 +43,17 @@ export const registerAction = (data) => {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case REGISTER_USER:
-            console.log(action.data);
             return {
                 ...state,
+                isLoggedIn: true,
+                nickname: action.data.nickname,
+                phone: action.data.phone,
                 role: action.data.role,
+            };
+        case LOGIN_USER:
+            return {
+                isLoggedIn: true,
+                nickname: action.data.nickname,
                 phone: action.data.phone,
             };
         default:

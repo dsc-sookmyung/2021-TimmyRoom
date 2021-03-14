@@ -7,11 +7,17 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.lang.reflect.Member;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findUserByNickname(String Nickname);
+    Optional<User> findUserByNickname(String Nickname);
+    Optional<User> findUserByPhone(String Phone);
+    // 궁금한거 User랑 Optional<User>의 차이
+    // findByNickname 이랑
+    // findUserByNickname이랑 뭐가다른지
+
     /*
     public EntityManager em = null;
 
