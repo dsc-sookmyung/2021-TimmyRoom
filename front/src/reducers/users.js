@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const initialState = {
+    isLoggedIn: false,
     nickname: '',
     phone: '',
     role: 'nondeveloper',
@@ -39,17 +40,19 @@ export const loginAction = (data) => {
     };
 };
 
-const reducer = (state = {}, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case REGISTER_USER:
             return {
                 ...state,
+                isLoggedIn: true,
                 nickname: action.data.nickname,
                 phone: action.data.phone,
                 role: action.data.role,
             };
         case LOGIN_USER:
             return {
+                isLoggedIn: true,
                 nickname: action.data.nickname,
                 phone: action.data.phone,
             };
