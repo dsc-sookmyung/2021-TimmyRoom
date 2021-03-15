@@ -11,7 +11,7 @@ import ErrorMessage from './ErrorMessage';
 const WritePage = () => {
     return(
         <Center>
-            <div class="board_write">
+            <div className="board_write">
                 <form action="#" method="post" enctype="multipart/form-data">
 					<table>
 						<tr>
@@ -28,7 +28,7 @@ const WritePage = () => {
 						</tr>
 					</table>
 
-					<div class="btn">
+					<div className="btn">
 						<button type="submit">확인</button>
 						<a href="">목록으로</a>
 					</div>
