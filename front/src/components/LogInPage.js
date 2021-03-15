@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Center from './Center';
@@ -41,7 +42,7 @@ const LoginBox = styled.div`
     }
 `;
 
-const LogInPage = () => {
+const LogInPage = (props) => {
     const dispatch = useDispatch();
 
     const [nickname, setNickname] = useState('');
@@ -62,7 +63,8 @@ const LogInPage = () => {
 
     const onSubmitForm = useCallback(() => {
         dispatch(loginUser({ nickname, phone }));
-    }, [phone]);
+        props.history.push('/main');
+    }, [nickname, phone]);
 
     return (
         <Center>
@@ -93,4 +95,4 @@ const LogInPage = () => {
     );
 };
 
-export default LogInPage;
+export default withRouter(LogInPage);

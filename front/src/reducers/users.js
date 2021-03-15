@@ -4,7 +4,7 @@ export const initialState = {
     isLoggedIn: false,
     nickname: '',
     phone: '',
-    role: 'nondeveloper',
+    role: 'user',
 };
 
 // action type
@@ -26,10 +26,11 @@ export const registerAction = (data) => {
     };
 };
 
-export const loginUser = async (data) => {
-    return (dispatch) => {
-        axios.post('http://localhost:8080/login', data);
-        dispatch(loginAction(data));
+export const loginUser = async(data) => {
+    return async(dispatch) => {
+        const request = await axios.post('http://localhost:8080/login', data);
+        console.log(request); 
+        // dispatch(loginAction(data));
     };
 };
 

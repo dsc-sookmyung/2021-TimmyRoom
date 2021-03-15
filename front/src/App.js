@@ -1,28 +1,36 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux'; 
 
 import Auth from './hoc/auth';
 import LogOutMain from './components/LogOutMain';
 import Main from './components/Main';
 import LogInPage from './components/LogInPage';
 import SignUpPage from './components/SignUpPage';
+import Chat from './components/Chat'; 
+import Need from './components/Need'; 
+import ChatWithDev from './components/ChatWithDev'; 
 import WritePage from './components/WritePage';
 
 const App = () => {
-    const [login, setLogin] = useState(false);
+    const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+    console.log(isLoggedIn);
 
     return (
         <Router>
             <Switch>
-                {/* {login ? (
-                    <Route exact path="/" component={LogInMain} />
+                {/* {isLoggedIn ? (
+                    <Route exact path="/main" component={Auth(Main, true)} />
                 ) : (
-                    <Route exact path="/" component={LogOutMain} />
+                    <Route exact path="/" component={Auth(LogOutMain, false)} />
                 )} */}
                 <Route exact path="/" component={Auth(LogOutMain, false)} />
                 <Route exact path="/login" component={Auth(LogInPage, false)} />
                 <Route exact path="/signup" component={Auth(SignUpPage, false)} />
                 <Route exact path="/main" component={Auth(Main, true)} />
+                <Route exact path="/chat" component={Auth(Chat, true)} />
+                <Route exact path="/need" component={Auth(Need, true)} />
+                <Route exact path="/chatwithdev" component={Auth(ChatWithDev, true)} />
                 <Route exact path="/write" component={Auth(WritePage, true)} />
                 <Route path="/*">404 Not Found</Route>
             </Switch>
