@@ -14,3 +14,17 @@
 .board_write > form > .btn > button:hover { background: gray; color: white; }
 .board_write > form > .btn > a { display: inline-block; padding: 2px 12px; line-height: 35px; text-align: center; border: 1px solid gray; color: gray; transition: 0.3s; }
 .board_write > form > .btn > a:hover { background: gray; color: white; }
+
+/* ListPage */
+.board_list { width: 100%; border-spacing: 0; }
+.board_list > tbody > tr { height: 40px; text-align: center; }
+.board_list > tbody > tr > th { border-top: 2px solid #4a78fe; border-bottom: 1px solid #dfdfdf;}
+.board_list > tbody > tr > td { border-bottom: 1px solid #dfdfdf; font-size: 15px; }
+.board_list > tbody > tr:not(.first):hover { background: #f4f4f4; }
+#gotoWrite { display: inline-block; margin-top: 20px; width: 90px; height: 35px; line-height: 35px; text-align: center; border: 1px solid #4a78fe; color: #4a78fe; transition: 0.3s; }
+#gotoWrite:hover { background: #4a78fe; color: white; }
+.paging { clear: both; margin-bottom: 30px; padding-bottom: 12px; }
+.paging > ul { text-align: center; width: 25%; margin: 0 auto; height: 45px; }
+.paging > ul > li { float: left; margin: 1.5%;  }
+.paging > ul > li > a { line-height: 30px; width: 30px; height: 30px; display: inline-block; border: 1px solid #4a78fe; color: #4a78fe; }
+.paging > ul > li:nth-child(2) > a { background: #4a78fe; color: white; }
