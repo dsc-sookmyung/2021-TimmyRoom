@@ -6,7 +6,6 @@ const ListPage = () => {
     return(
         <Center>
             <table className="board_list">
-                
                 <tr className="first">
                     <th>번호</th>
                     <th>제목</th>
