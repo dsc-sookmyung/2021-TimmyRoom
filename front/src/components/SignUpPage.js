@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import Center from './Center';
@@ -70,16 +71,16 @@ const InputBox = styled.div`
     }
 `;
 
-const SignUpPage = () => {
+const SignUpPage = (props) => {
     const dispatch = useDispatch();
 
-    const [role, setRole] = useState('nondeveloper');
+    const [role, setRole] = useState('user');
     const onChangeRole = useCallback(
         (e) => {
             if (e.target.checked) {
-                setRole('developer');
+                setRole('dev');
             } else {
-                setRole('nondeveloper');
+                setRole('user');
             }
         },
         [role],
@@ -148,6 +149,7 @@ const SignUpPage = () => {
         //     return alert('이미 등록된 사용자입니다. 전화번호를 다시 입력해주십시오.');
         // }
         dispatch(registerUser({ role, phone, nickname }));
+        props.history.push('/main');
     }, [role, phone, nickname]);
 
     return (
@@ -194,4 +196,4 @@ const SignUpPage = () => {
     );
 };
 
-export default SignUpPage;
+export default withRouter(SignUpPage);
