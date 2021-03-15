@@ -1,11 +1,12 @@
 import './style.css';
 import Center from './Center';  
+import { Link } from 'react-router-dom'; 
 
 const WritePage = () => {
     return (
         <Center>
             <div className="board_write">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="#" method="post">
                     <table>
                         <tr>
                             <th><label for="title">제목</label></th>
@@ -16,14 +17,17 @@ const WritePage = () => {
                             <td><textarea name="content" id="content"></textarea></td>
                         </tr>
                         <tr>								
-                            <th>첨부파일</th>
+                            <th>첨부</th>
                             <td><input type="file" name="file" id="file"></input></td>
                         </tr>
                     </table>
 
+
                     <div className="btn">
                         <button type="submit">확인</button>
-                        <a href="">목록으로</a>
+                        <Link to="/list">
+                            <a>목록으로</a>
+                        </Link>
                     </div>
                 </form>
 
