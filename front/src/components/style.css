@@ -1,30 +1,33 @@
 /* WritePage */
-.board_write { margin-top: 30px; height: 624px; }
-.board_write > form > table { border-spacing: 0; width: 100%; border-top: 2px solid #c8c8c8; }
-.board_write > form > table > tbody > tr { height: 45px; }
-.board_write > form > table > tbody > tr > th { width: 20%; background: #efefef; border-bottom: 1px solid #e3e3e3; }
-.board_write > form > table > tbody > tr > td { border-bottom: 1px solid #e3e3e3; padding: 10px; }
-.board_write > form > table > tbody > tr > td > input { border: none; width: 100%; border: 1px solid #b5b5b5; height: 25px; }
-.board_write > form > table > tbody > tr > td > input:focus {outline: none;}
-.board_write > form > table > tbody > tr > td > textarea { width: 100%; height: 200px; resize: vertical; }
-.board_write > form > table > tbody > tr > td > textarea:focus {outline: none;}
+.board_write { margin-top: 30px; height: 624px; background-color: aliceblue;}
+.board_write > form > table { border-spacing: 0; width: 100%; border-top: 2px solid yellow; }
+.board_write > form > table > tr { height: 45px;  }
+.board_write > form > table > tr > th { width: 7%; background: #efefef; border-bottom: 1px solid #e3e3e3; }
+.board_write > form > table > tr > td { border-bottom: 1px solid #e3e3e3; padding: 10px; }
+.board_write > form > table > tr > td > input { border: none; width: 100%; border: 1px solid #b5b5b5; height: 40px; }
+.board_write > form > table > tr > td > input:focus {outline: none;}
+.board_write > form > table > tr > td > textarea { width: 100%; height: 400px; resize: vertical; }
+.board_write > form > table > tr > td > textarea:focus {outline: none;}
 .board_write > form > .btn { float: right; padding: 20px 0; }
-.board_write > form > .btn > button { width: 85px; height: 42px; background: none; border: 1px solid gray; color: gray; transition: all 0.3s; font-size: 16px; margin-top: -1px; }
+.board_write > form > .btn > button { width: 50px; height: 36px; background: none; border: 1px solid gray; color: gray; transition: all 0.3s; font-size: 10px; margin: 3px; }
 .board_write > form > .btn > button:focus { outline: none; }
 .board_write > form > .btn > button:hover { background: gray; color: white; }
-.board_write > form > .btn > a { display: inline-block; padding: 2px 12px; line-height: 35px; text-align: center; border: 1px solid gray; color: gray; transition: 0.3s; }
+.board_write > form > .btn > a { display: inline-block; padding: 2px 10px; line-height: 30px; text-align: center; border: 1px solid gray; color: gray; transition: 0.3s; margin: 3px;}
 .board_write > form > .btn > a:hover { background: gray; color: white; }
 
 /* ListPage */
-.board_list { width: 100%; border-spacing: 0; }
-.board_list > tbody > tr { height: 40px; text-align: center; }
-.board_list > tbody > tr > th { border-top: 2px solid #4a78fe; border-bottom: 1px solid #dfdfdf;}
-.board_list > tbody > tr > td { border-bottom: 1px solid #dfdfdf; font-size: 15px; }
-.board_list > tbody > tr:not(.first):hover { background: #f4f4f4; }
-#gotoWrite { display: inline-block; margin-top: 20px; width: 90px; height: 35px; line-height: 35px; text-align: center; border: 1px solid #4a78fe; color: #4a78fe; transition: 0.3s; }
+.board_list { width: 300px; border-spacing: 0; background-color: aliceblue;}
+.board_list > tr { height: 40px; text-align: center; }
+.board_list > tr > th { border-top: 2px solid #4a78fe; border-bottom: 1px solid #dfdfdf;}
+.board_list > tr > td { border-bottom: 1px solid #dfdfdf; font-size: 15px; color: black;}
+.board_list > tr:not(.first):hover { background: #ffdc18; cursor: pointer; }
+
+#gotoWrite { display: inline-block; margin: 20px; width: 90px; height: 35px; line-height: 35px; text-align: center; border: 1px solid #4a78fe; color: #4a78fe; transition: 0.3s; }
 #gotoWrite:hover { background: #4a78fe; color: white; }
-.paging { clear: both; margin-bottom: 30px; padding-bottom: 12px; }
-.paging > ul { text-align: center; width: 25%; margin: 0 auto; height: 45px; }
-.paging > ul > li { float: left; margin: 1.5%;  }
+.paging {width: 230px; margin-bottom: 30px; padding-bottom: 12px; align-items: center; }
+.paging > ul { text-align: center; margin: 0 auto; height: 45px; align-items: center;}
+.paging > ul > li { float: left; margin: 1px;  }
 .paging > ul > li > a { line-height: 30px; width: 30px; height: 30px; display: inline-block; border: 1px solid #4a78fe; color: #4a78fe; }
 .paging > ul > li:nth-child(2) > a { background: #4a78fe; color: white; }
+
+/* View Page */
