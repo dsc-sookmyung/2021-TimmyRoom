@@ -6,6 +6,7 @@ import LogOutMain from './components/LogOutMain';
 import Main from './components/Main';
 import LogInPage from './components/LogInPage';
 import SignUpPage from './components/SignUpPage';
+import WritePage from './components/WritePage';
 
 const App = () => {
     const [login, setLogin] = useState(false);
@@ -22,6 +23,7 @@ const App = () => {
                 <Route exact path="/login" component={Auth(LogInPage, false)} />
                 <Route exact path="/signup" component={Auth(SignUpPage, false)} />
                 <Route exact path="/main" component={Auth(Main, true)} />
+                <Route exact path="/write" component={Auth(WritePage, true)} />
                 <Route path="/*">404 Not Found</Route>
             </Switch>
         </Router>
