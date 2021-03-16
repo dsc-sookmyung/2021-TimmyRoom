@@ -12,6 +12,7 @@ import Need from './components/Need';
 import ChatWithDev from './components/ChatWithDev'; 
 import WritePage from './components/WritePage';
 import ListPage from './components/ListPge';
+import ViewPage from './components/ViewPage';
 
 const App = () => {
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
@@ -34,6 +35,7 @@ const App = () => {
                 <Route exact path="/chatwithdev" component={Auth(ChatWithDev, null)} />
                 <Route exact path="/write" component={Auth(WritePage, null)} />
                 <Route exact path="/list" component={Auth(ListPage, null)} />
+                <Route exact path="/view" component={Auth(ViewPage, null)} />
                 <Route path="/*">404 Not Found</Route>
             </Switch>
         </Router>
