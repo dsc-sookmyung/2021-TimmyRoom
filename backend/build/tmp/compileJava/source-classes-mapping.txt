@@ -16,9 +16,9 @@ dsc/timmyroom/backend/auth/JwtAuthenticationFilter.java
  dsc.timmyroom.backend.auth.JwtAuthenticationFilter
 dsc/timmyroom/backend/auth/JwtTokenProvider.java
  dsc.timmyroom.backend.auth.JwtTokenProvider
-dsc/timmyroom/backend/auth/SecurityConfig.java
- dsc.timmyroom.backend.auth.SecurityConfig
-dsc/timmyroom/backend/service/UserService.java
- dsc.timmyroom.backend.service.UserService
 dsc/timmyroom/backend/controller/JoinController.java
  dsc.timmyroom.backend.controller.JoinController
+dsc/timmyroom/backend/service/UserService.java
+ dsc.timmyroom.backend.service.UserService
+dsc/timmyroom/backend/auth/SecurityConfig.java
+ dsc.timmyroom.backend.auth.SecurityConfig
