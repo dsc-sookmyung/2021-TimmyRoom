@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +28,16 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(()-> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
     }
 
-
+    /**
+     * 중복 회원 검증
+     */
+    private void validateDuplicateUser(User user) {
+        Optional<User> findUser = userRepository.findUserByNickname(user.getNickname());
+        if (findUser != null) {
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        }
+        // https://blog.naver.com/PostView.nhn?blogId=qjawnswkd&logNo=222056895788
+    }
     /*
     @Transactional
     public void joinUser(User user){
