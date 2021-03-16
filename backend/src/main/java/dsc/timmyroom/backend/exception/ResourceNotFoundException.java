@@ -12,3 +12,7 @@ public class ResourceNotFoundException extends RuntimeException {
     }
 }
 
+/**
+ * 에러 처리관련해서 참고할 사이트
+ * https://pjh3749.tistory.com/273
+ */
