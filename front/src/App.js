@@ -14,7 +14,6 @@ import WritePage from './components/WritePage';
 
 const App = () => {
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-    console.log(isLoggedIn);
 
     return (
         <Router>

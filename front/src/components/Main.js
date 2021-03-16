@@ -12,7 +12,7 @@ const Main = () => {
             <Link to="/need" style={{ marginBottom: '2rem' }}>
                 <Button>필요해요</Button>
             </Link>
-            <Link to="/chatwithdev" style={{ marginBottom: '2rem' }}>
+            <Link to="/chatwithdev">
                 <Button>개발자와 소통해요</Button>
             </Link>
         </Center>

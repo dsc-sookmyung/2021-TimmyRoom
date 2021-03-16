@@ -113,30 +113,6 @@ const SignUpPage = (props) => {
 
     const [registerError, setRegisterError] = useState(false);
 
-    const renderSubmitBtn = useCallback(() => {
-        // 중복된 사용자라면, button disable
-        if (registerError) {
-            return (
-                <Button
-                    type="submit"
-                    onClick={checkRegistered}
-                    style={{
-                        backgroundColor: 'rgba(255,211,0,0.5)',
-                    }}
-                    disabled
-                >
-                    회원가입하기
-                </Button>
-            );
-        }
-
-        return (
-            <Button type="submit" onClick={checkRegistered}>
-                회원가입하기
-            </Button>
-        );
-    }, [registerError]);
-
     const onSubmitForm = useCallback(() => {
         // 전화번호 중복 확인
         // if(){ //중복이라면
