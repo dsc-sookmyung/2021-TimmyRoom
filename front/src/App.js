@@ -16,7 +16,6 @@ import ViewPage from './components/ViewPage';
 
 const App = () => {
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-    console.log(isLoggedIn);
 
     return (
         <Router>

@@ -1,11 +1,11 @@
-import { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Center from './Center';
 import Button from './Button';
-import { loginUser } from '../reducers/users';
+import { loginRequestAction } from '../reducers/users';
 
 const LoginBox = styled.div`
     & > label {
@@ -61,10 +61,29 @@ const LogInPage = (props) => {
         [phone],
     );
 
-    const onSubmitForm = useCallback(() => {
-        dispatch(loginUser({ nickname, phone }));
-        props.history.push('/main');
+    const onSubmitForm = useCallback((e) => {
+        // e.preventDefault();
+        dispatch(loginRequestAction({ nickname, phone })); 
+            // .then(response => {
+            //     console.log(response);
+            //     if(response.success){
+            //         dispatch(loginAction({ nickname, phone }));
+            //         props.history.push('/main');
+            //     }
+            //     else{
+            //         return alert('닉네임과 비밀번호를 다시 확인해주세요.'); 
+            //     }
+            // })
+            // .catch(err => console.log(err));
+        
     }, [nickname, phone]);
+
+    const isLoggedIn = useSelector((state) => state.user.isLoggedIn); 
+    useEffect(() => {
+        if(isLoggedIn){
+            props.history.push('/main');
+        }
+    }, [isLoggedIn]);
 
     return (
         <Center>

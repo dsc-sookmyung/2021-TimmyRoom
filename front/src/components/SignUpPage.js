@@ -1,13 +1,11 @@
 import styled from 'styled-components';
-import { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
 
 import Center from './Center';
 import Button from './Button';
-import { registerUser } from '../reducers/users';
-import ErrorMessage from './ErrorMessage';
+import { signUpRequestAction } from '../reducers/users';
 
 const InputBox = styled.div`
     display: flex;
@@ -111,31 +109,14 @@ const SignUpPage = (props) => {
         setRegistered(true);
     };
 
-    const [registerError, setRegisterError] = useState(false);
+    const { signUpDone } = useSelector((state) => state.user); 
 
-    const renderSubmitBtn = useCallback(() => {
-        // 중복된 사용자라면, button disable
-        if (registerError) {
-            return (
-                <Button
-                    type="submit"
-                    onClick={checkRegistered}
-                    style={{
-                        backgroundColor: 'rgba(255,211,0,0.5)',
-                    }}
-                    disabled
-                >
-                    회원가입하기
-                </Button>
-            );
+    useEffect(() => {
+        console.log(signUpDone);
+        if(signUpDone){
+            props.history.push('/main');
         }
-
-        return (
-            <Button type="submit" onClick={checkRegistered}>
-                회원가입하기
-            </Button>
-        );
-    }, [registerError]);
+    }, [signUpDone]);
 
     const onSubmitForm = useCallback(() => {
         // 전화번호 중복 확인
@@ -148,8 +129,7 @@ const SignUpPage = (props) => {
         //     setPhone('');
         //     return alert('이미 등록된 사용자입니다. 전화번호를 다시 입력해주십시오.');
         // }
-        dispatch(registerUser({ role, phone, nickname }));
-        props.history.push('/main');
+        dispatch(signUpRequestAction({ role, phone, nickname }));
     }, [role, phone, nickname]);
 
     return (
@@ -188,7 +168,6 @@ const SignUpPage = (props) => {
                             borderRadius: '6px',
                         }}
                     />
-                    {registerError && <ErrorMessage>이미 등록된 전화번호입니다.</ErrorMessage>}
                 </div>
                 <Button type="submit">회원가입하기</Button>
             </form>
