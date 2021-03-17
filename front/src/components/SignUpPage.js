@@ -112,7 +112,6 @@ const SignUpPage = (props) => {
     const { signUpDone } = useSelector((state) => state.user); 
 
     useEffect(() => {
-        console.log(signUpDone);
         if(signUpDone){
             props.history.push('/main');
         }

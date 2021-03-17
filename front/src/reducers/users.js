@@ -5,7 +5,7 @@ export const initialState = {
     signUpDone: false,
     signUpError: null,
     logInError: null, 
-    isLoggedIn: false,
+    isLoggedIn: true,
     nickname: '',
     phone: '',
     role: 'user',

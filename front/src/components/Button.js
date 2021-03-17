@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const Button = styled.a`
     display: flex;
     justify-content: center;
     align-items: center;
