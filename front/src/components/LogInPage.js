@@ -78,12 +78,12 @@ const LogInPage = (props) => {
         
     }, [nickname, phone]);
 
-    // const isLoggedIn = useSelector((state) => state.user.isLoggedIn); 
-    // useEffect(() => {
-    //     if(isLoggedIn){
-    //         props.history.push('/main');
-    //     }
-    // }, [isLoggedIn]);
+    const isLoggedIn = useSelector((state) => state.user.isLoggedIn); 
+    useEffect(() => {
+        if(isLoggedIn){
+            props.history.push('/main');
+        }
+    }, [isLoggedIn]);
 
     return (
         <Center>
