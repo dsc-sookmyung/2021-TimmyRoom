@@ -16,7 +16,7 @@ public class MyUserDetail implements UserDetails {
 
     public MyUserDetail(User user) {
         this.nickname = user.getNickname();
-        this.phone = user.getPhone();
+        this.phone = "{noop}" + user.getPhone();
         this.auth = "ROLE_" + user.getRole();
     }
 

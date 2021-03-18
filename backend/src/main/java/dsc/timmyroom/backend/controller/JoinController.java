@@ -34,20 +34,21 @@ public class JoinController {
         //BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         //User findUser = userRepository.findUserByPhone(user.getPhone())
         user.setNickname(user.getNickname());
-        user.setPhone(passwordEncoder.encode(user.getPhone()));
+        user.setPhone(user.getPhone());
+        // user.setPhone(passwordEncoder.encode(user.getPhone()));
         user.setRole("USER");
         return userRepository.save(user);
     }
 
-
     // 로그인
     @PostMapping("/login")
+    //@RequestMapping(value="/login", produces = "application/json", method ={RequestMethod.GET, RequestMethod.POST})
     public ResponseEntity<?> login(@RequestBody User user) {
         User member = userRepository.findUserByNickname(user.getNickname())
                 .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 Nickname 입니다."));
-        if (!passwordEncoder.matches(user.getPhone(), member.getPhone())) {
-            throw new IllegalArgumentException("가입 유저의 휴대폰 번호가 아닙니다.");
-        }
+        //if (!passwordEncoder.matches(user.getPhone(), member.getPhone())) {
+          //  throw new IllegalArgumentException("가입 유저의 휴대폰 번호가 아닙니다.");
+        //}
 
         String token = jwtTokenProvider.createToken(member.getNickname(), member.getRole());
         Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -56,8 +57,10 @@ public class JoinController {
         resultMap.put("success", true);
         resultMap.put("message", "로그인 성공");
         resultMap.put("token", token);
+
         return new ResponseEntity<>(resultMap, HttpStatus.OK);
     }
+
     /*
      * 회원가입 폼
      * @return
