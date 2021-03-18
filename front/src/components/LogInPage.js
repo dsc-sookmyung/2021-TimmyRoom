@@ -61,21 +61,8 @@ const LogInPage = (props) => {
         [phone],
     );
 
-    const onSubmitForm = useCallback((e) => {
-        // e.preventDefault();
+    const onSubmitForm = useCallback(() => {
         dispatch(loginRequestAction({ nickname, phone })); 
-            // .then(response => {
-            //     console.log(response);
-            //     if(response.success){
-            //         dispatch(loginAction({ nickname, phone }));
-            //         props.history.push('/main');
-            //     }
-            //     else{
-            //         return alert('닉네임과 비밀번호를 다시 확인해주세요.'); 
-            //     }
-            // })
-            // .catch(err => console.log(err));
-        
     }, [nickname, phone]);
 
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn); 

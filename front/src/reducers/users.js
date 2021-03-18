@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const initialState = {
     signUpLoading: false, // 회원가입 시도중
     signUpDone: false,
