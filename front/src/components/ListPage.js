@@ -11,7 +11,6 @@ const ListPage = () => {
                     <th>제목</th>
                     <th>작성자</th>
                     <th>등록일</th>
-                    <th>조회수</th>
                 </tr>
             
                  <tr onClick={()=> document.location.href="/view"}> 
@@ -19,21 +18,18 @@ const ListPage = () => {
                     <td>글 제목</td>
                     <td>박시연</td>
                     <td>2021.03.15</td>
-                    <td>1</td>
                 </tr>
                 <tr onClick={()=> document.location.href="/view"}>
                     <td>2</td>
                     <td>글 제목</td>
                     <td>박시연</td>
                     <td>2021.03.15</td>
-                    <td>1</td>
                 </tr>
                 <tr onClick={()=> document.location.href="/view"}>
                     <td>1</td>
                     <td>글 제목</td>
                     <td>박시연</td>
                     <td>2021.03.15</td>
-                    <td>1</td>
                 </tr>
                 
             </table>

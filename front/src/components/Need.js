@@ -10,8 +10,8 @@ const Need = () => {
     return (
         <Center>
             <CategoryTitle>필요해요</CategoryTitle>
-            <Button onClick={() => history.push('/write')} style={{ marginBottom: '2rem' }}>글쓰기</Button>
-            <Button onClick={() => history.push('/list')}>게시글 목록</Button>
+            <Button onClick={() => history.push('/need/write')} style={{ marginBottom: '2rem' }}>글쓰기</Button>
+            <Button onClick={() => history.push('/need/list')}>게시글 목록</Button>
         </Center>
     )
 }

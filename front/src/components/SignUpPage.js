@@ -72,13 +72,13 @@ const InputBox = styled.div`
 const SignUpPage = (props) => {
     const dispatch = useDispatch();
 
-    const [role, setRole] = useState('user');
+    const [role, setRole] = useState('USER');
     const onChangeRole = useCallback(
         (e) => {
             if (e.target.checked) {
-                setRole('dev');
+                setRole('DEV');
             } else {
-                setRole('user');
+                setRole('USER');
             }
         },
         [role],

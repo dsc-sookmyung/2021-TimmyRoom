@@ -6,7 +6,7 @@ export const initialState = {
     isLoggedIn: true,
     nickname: '',
     phone: '',
-    role: 'user',
+    role: 'USER',
 };
 
 // action type

@@ -1,10 +1,12 @@
-import { useHistory } from 'react-router-dom'; 
+import { useHistory, useLocation } from 'react-router-dom'; 
 
 import Center from './Center';
 import Button from './Button';
 
 const Main = () => {
     const history = useHistory(); 
+    const location = useLocation(); 
+    // console.log(history.go(-1).location);
 
     return (
         <Center>
