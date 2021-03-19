@@ -1,8 +1,12 @@
 import './style.css';
 import Center from './Center';  
-import { Link } from 'react-router-dom'; 
+import { Link, useLocation, useHistory } from 'react-router-dom'; 
 
 const ListPage = () => {
+    const history = useHistory(); 
+    const location = useLocation().pathname; // ex) /chat/list 
+    const upperLocation = location.match(/[/]\w+/)[0]; // ex) /chat
+
     return(
         <Center>
             <table className="board_list">
@@ -33,7 +37,7 @@ const ListPage = () => {
                 </tr>
                 
             </table>
-            <Link to="/write"><a id="gotoWrite">글쓰기</a></Link>
+            <button onClick={() => history.push(`${upperLocation}/write`)}>글쓰기</button>
             <div className="paging">
                 <ul>
                     <li><a href="">앞</a></li>

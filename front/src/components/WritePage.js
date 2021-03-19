@@ -6,23 +6,25 @@ import Center from './Center';
 
 const WritePage = () => {
     const history = useHistory(); 
-    const location = useLocation(); 
+    const location = useLocation().pathname; 
+    const upperLocation = location.match(/[/]\w+/)[0];
+
     const [categoryId, setCategoryId] = useState(null); 
     useEffect(() => {
-        switch(location.pathname){
-            case '/chat/write':
+        switch(upperLocation){
+            case '/chat':
                 setCategoryId(1); 
                 break;
-            case '/need/write':
+            case '/need':
                 setCategoryId(2); 
                 break;
-            case '/chatwithdev/write':
+            case '/chatwithdev':
                 setCategoryId(3); 
                 break;
             default:
                 setCategoryId(null); 
         }
-    }, [location.pathname]); 
+    }, [upperLocation]); 
 
     const [title, setTitle] = useState('');
     const onChangeTitle = useCallback((e) => {
@@ -35,7 +37,7 @@ const WritePage = () => {
     }, [content]);
 
     const onSubmitForm = useCallback(() => {
-        // dispatch(postRequestAction({ categoryId, title, content, file }));
+        // dispatch(addPostRequestAction({ categoryId, title, content }));
     }, []);
 
     return (
@@ -60,7 +62,7 @@ const WritePage = () => {
 
                     <div className="btn">
                         <button type="submit">확인</button>
-                        <button onClick={() => history.push('/chat/list')}>
+                        <button onClick={() => history.push(`${upperLocation}/list`)}>
                             목록으로
                         </button>
                     </div>
