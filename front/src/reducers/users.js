@@ -52,6 +52,7 @@ const reducer = (state = initialState, action) => {
             }
         case SIGN_UP_FAILURE:
             return{
+                ...state,
                 signUpLoading: false,
                 signUpError: action.error,
             }

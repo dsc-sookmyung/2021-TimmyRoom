@@ -5,8 +5,6 @@ import Button from './Button';
 
 const Main = () => {
     const history = useHistory(); 
-    const location = useLocation(); 
-    // console.log(history.go(-1).location);
 
     return (
         <Center>

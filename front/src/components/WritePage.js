@@ -1,10 +1,14 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux'; 
 
 import './style.css';
 import Center from './Center';  
+import { addPostRequestAction } from '../reducers/posts';
 
 const WritePage = () => {
+    const dispatch = useDispatch(); 
+
     const history = useHistory(); 
     const location = useLocation().pathname; 
     const upperLocation = location.match(/[/]\w+/)[0];
@@ -37,8 +41,8 @@ const WritePage = () => {
     }, [content]);
 
     const onSubmitForm = useCallback(() => {
-        // dispatch(addPostRequestAction({ categoryId, title, content }));
-    }, []);
+        dispatch(addPostRequestAction({ categoryId, title, content }));
+    }, [categoryId, title, content]);
 
     return (
         <Center>
