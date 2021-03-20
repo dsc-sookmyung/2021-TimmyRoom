@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux'; 
+import { useDispatch, useSelector } from 'react-redux'; 
 
 import './style.css';
 import Center from './Center';  
@@ -40,9 +40,11 @@ const WritePage = () => {
         setContent(e.target.value); 
     }, [content]);
 
+    const writer = useSelector((state) => state.user.nickname); 
+
     const onSubmitForm = useCallback(() => {
-        dispatch(addPostRequestAction({ categoryId, title, content }));
-    }, [categoryId, title, content]);
+        dispatch(addPostRequestAction({ categoryId, writer, title, content }));
+    }, [categoryId, writer, title, content]);
 
     return (
         <Center>

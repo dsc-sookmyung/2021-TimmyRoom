@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import Center from './Center';
 import Button from './Button';
-import { signUpRequestAction } from '../reducers/users';
+import { signUpRequestAction, loadUsersRequestAction } from '../reducers/users';
 
 const InputBox = styled.div`
     display: flex;
@@ -109,13 +109,17 @@ const SignUpPage = (props) => {
         setRegistered(true);
     };
 
-    const { signUpDone } = useSelector((state) => state.user); 
+    const { signUpDone, loadUsersDone, Users } = useSelector((state) => state.user); 
 
     useEffect(() => {
+        dispatch(loadUsersRequestAction());
         if(signUpDone){
             props.history.push('/main');
         }
-    }, [signUpDone]);
+        if(loadUsersDone){
+            console.log(Users);
+        }
+    }, [signUpDone, loadUsersDone]);
 
     const onSubmitForm = useCallback(() => {
         // 전화번호 중복 확인

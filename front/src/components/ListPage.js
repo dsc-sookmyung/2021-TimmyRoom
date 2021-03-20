@@ -1,11 +1,36 @@
+import { useState, useEffect } from 'react'; 
+import { useLocation, useHistory } from 'react-router-dom'; 
+import { useDispatch } from 'react-redux';
+
 import './style.css';
-import Center from './Center';  
-import { Link, useLocation, useHistory } from 'react-router-dom'; 
+import Center from './Center';
+import { loadPostsRequestAction } from '../reducers/posts'; 
 
 const ListPage = () => {
+    const dispatch = useDispatch(); 
+
     const history = useHistory(); 
     const location = useLocation().pathname; // ex) /chat/list 
     const upperLocation = location.match(/[/]\w+/)[0]; // ex) /chat
+
+    // categoryId가 무엇이냐에 따라 받아오는 게시물 data가 달라짐
+    const [categoryId, setCategoryId] = useState(null); 
+    useEffect(() => {
+        switch(upperLocation){
+            case '/chat':
+                setCategoryId(1); 
+                break;
+            case '/need':
+                setCategoryId(2); 
+                break;
+            case '/chatwithdev':
+                setCategoryId(3); 
+                break;
+            default:
+                setCategoryId(null); 
+        }
+        dispatch(loadPostsRequestAction({ categoryId })); 
+    }, [upperLocation]); 
 
     return(
         <Center>
