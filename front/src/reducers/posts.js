@@ -9,6 +9,7 @@ export const initialState = {
     writer: '', 
     title: '',
     content: '', 
+    Posts: null, 
 }
 
 export const ADD_POST_REQUEST = 'ADD_POST_REQUEST'; 
@@ -60,6 +61,19 @@ const reducer = (state = initialState, action) => {
             return{
                 ...state, 
                 loadPostsLoading: true, 
+            }
+        case LOAD_POSTS_SUCCESS:
+            return{
+                ...state, 
+                loadPostsLoading: false, 
+                loadPostsDone: true, 
+                Posts: action.data, 
+            }
+        case LOAD_POSTS_FAILURE:
+            return{
+                ...state, 
+                loadPostsLoading: false, 
+                loadPostsError: action.error,
             }
         default:
             return state; 

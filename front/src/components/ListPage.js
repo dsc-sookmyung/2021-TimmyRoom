@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'; 
 import { useLocation, useHistory } from 'react-router-dom'; 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './style.css';
 import Center from './Center';
@@ -15,6 +15,9 @@ const ListPage = () => {
 
     // categoryId가 무엇이냐에 따라 받아오는 게시물 data가 달라짐
     const [categoryId, setCategoryId] = useState(null); 
+
+    const { loadPostsDone, Posts } = useSelector((state) => state.post); 
+
     useEffect(() => {
         switch(upperLocation){
             case '/chat':
@@ -29,8 +32,15 @@ const ListPage = () => {
             default:
                 setCategoryId(null); 
         }
-        dispatch(loadPostsRequestAction({ categoryId })); 
-    }, [upperLocation]); 
+
+        if(categoryId !== null){
+            dispatch(loadPostsRequestAction({ categoryId })); 
+            if(loadPostsDone){
+                // 해당 카테고리에 있는 게시글 배열을 posts 변수에 넣는다. 
+                const posts = Posts;  
+            }
+        }
+    }, [categoryId]);
 
     return(
         <Center>

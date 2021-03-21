@@ -3,17 +3,19 @@ import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 
 import { SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE, LOAD_USERS_REQUEST, LOAD_USERS_SUCCESS, LOAD_USERS_FAILURE } from '../reducers/users'
 
+export const baseUrl = 'http://localhost:8080'; 
+
 function signUpAPI(data){
-    return axios.post('http://localhost:8080/users', data); 
+    return axios.post(`${baseUrl}/users`, data); 
 }
 
 function loginAPI(data){
     // 서버에 요청을 보내는 부분 
-    return axios.post('http://localhost:8080/login', data); 
+    return axios.post(`${baseUrl}/login`, data); 
 }
 
 function loadUsersAPI(){
-    return axios.get('http://localhost:8080/users');
+    return axios.get(`${baseUrl}/users`);
 }
 
 function* signUp(action){

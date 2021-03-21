@@ -1,8 +1,8 @@
 import axios from 'axios'; 
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
-import { ADD_POST_REQUEST, ADD_POST_SUCCESS, ADD_POST_FAILURE, LOAD_POSTS_REQUEST, LOAD_POSTS_SUCCESS, LOAD_POSTS_FAILURE } from '../reducers/posts';
 
-const baseUrl = 'http://localhost:8080'; 
+import { ADD_POST_REQUEST, ADD_POST_SUCCESS, ADD_POST_FAILURE, LOAD_POSTS_REQUEST, LOAD_POSTS_SUCCESS, LOAD_POSTS_FAILURE } from '../reducers/posts';
+import { baseUrl } from './user';
 
 function addPostAPI(data){
     const categoryId = data.categoryId; 
@@ -50,13 +50,13 @@ function* watchAddPost(){
     yield takeLatest(ADD_POST_REQUEST, addPost)
 }
 
-function* watchLoadPost(){
+function* watchLoadPosts(){
     yield takeLatest(LOAD_POSTS_REQUEST, loadPosts)
 }
 
 export default function* postSaga(){
     yield all([
         fork(watchAddPost),
-        fork(watchLoadPost), 
+        fork(watchLoadPosts), 
     ])
 }

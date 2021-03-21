@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './style.css';
 import Center from './Center';  
 import { addPostRequestAction } from '../reducers/posts';
+import { loadUsersRequestAction } from '../reducers/users';
 
 const WritePage = () => {
     const dispatch = useDispatch(); 
@@ -12,6 +13,8 @@ const WritePage = () => {
     const history = useHistory(); 
     const location = useLocation().pathname; 
     const upperLocation = location.match(/[/]\w+/)[0];
+
+    const { loadUsersDone, Users } = useSelector((state) => state.user);
 
     const [categoryId, setCategoryId] = useState(null); 
     useEffect(() => {
@@ -28,7 +31,15 @@ const WritePage = () => {
             default:
                 setCategoryId(null); 
         }
-    }, [upperLocation]); 
+        /*
+        if(categoryId !== null){
+            dispatch(loadUsersRequestAction({ categoryId }));
+            if(loadUsersDone){
+                console.log(Users); 
+            }
+        }
+        */
+    }, [categoryId]); 
 
     const [title, setTitle] = useState('');
     const onChangeTitle = useCallback((e) => {
