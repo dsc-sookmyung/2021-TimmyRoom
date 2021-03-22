@@ -23,11 +23,11 @@
 .board_list > tr:not(.first):hover { background: #ffdc18; cursor: pointer; }
 #gotoWrite { display: inline-block; margin: 20px; width: 90px; height: 35px; line-height: 35px; text-align: center; border: 1px solid #ffdc18;; color: #ffdc18;; transition: 0.3s; }
 #gotoWrite:hover { background: #ffdc18; color: white; }
-.paging {width: 230px; margin-bottom: 30px; padding-bottom: 12px; align-items: center; }
-.paging > ul { text-align: center; margin: 0 auto; height: 45px; align-items: center;}
-.paging > ul > li { float: left; margin: 1px;  }
-.paging > ul > li > a { line-height: 30px; width: 30px; height: 30px; display: inline-block; border: 1px solid #ffdc18;; color: #ffdc18;; }
-.paging > ul > li:nth-child(2) > a { background: #ffdc18;; color: white; }
+.paging {margin-bottom: 30px; padding-bottom: 12px; align-items: center; }
+.paging > ul { text-align: center; margin: 0 auto; height: 45px; align-items: center; padding-inline-start: 0;}
+.paging > ul > li { float: left; margin: 1px; line-height: 30px; width: 30px; height: 30px; display: inline-block; border: 1px solid #ffdc18; color: #ffdc18; }
+.paging > ul > li > a { line-height: 30px; width: 30px; height: 30px; display: inline-block; border: 1px solid #ffdc18; color: #ffdc18; }
+.paging > ul > li:nth-child(2) > a { background: #ffdc18; color: white; }
 
 /* View Page */
 .board_contents { width: 500px; background-color: aliceblue; }
