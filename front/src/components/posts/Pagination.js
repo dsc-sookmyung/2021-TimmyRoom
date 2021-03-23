@@ -12,7 +12,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
                 <li>앞</li>
                 {pageNum.map((page, index) => {
                     return(
-                        <li key={index} onCLick={paginate(page)}>{page}</li>
+                        <li key={index} onClick={() => paginate(page)}>{page}</li>
                     )
                 })}
                 <li>뒤</li>

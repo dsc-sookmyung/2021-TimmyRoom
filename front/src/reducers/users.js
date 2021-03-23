@@ -97,7 +97,7 @@ const reducer = (state = initialState, action) => {
                 ...state, 
                 loadUsersLoading: false, 
                 loadUsersDone: true, 
-                Users: action.data,
+                Users: action.data.reverse(),
             }
         case LOAD_USERS_FAILURE:
             return{

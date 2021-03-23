@@ -1,6 +1,6 @@
 const PostList = ({ posts }) => {
     return(
-        posts.map((post, index) => {
+        posts.map((post) => {
             return(
                 // <tr key={index}>
                 //     <td>{post.id}</td>
@@ -8,7 +8,7 @@ const PostList = ({ posts }) => {
                 //     <td>{post.writer}</td>
                 //     <td>{post.date}</td>
                 // </tr>
-                <tr key={index}>
+                <tr key={post.id}>
                     <td>{post.id}</td>
                     <td>{post.nickname}</td>
                     <td>{post.role}</td>
