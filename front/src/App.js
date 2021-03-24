@@ -38,7 +38,7 @@ const App = () => {
                 <Route exact path="/chat/list" component={Auth(ListPage, true)} />
                 <Route exact path="/need/list" component={Auth(ListPage, true)} />
                 <Route exact path="/chatwithdev/list" component={Auth(ListPage, true)} />
-                <Route exact path="/view" component={Auth(ViewPage, true)} />
+                <Route exact path="/view/:id" component={Auth(ViewPage, true)} />
                 <Route path="/*">404 Not Found</Route>
             </Switch>
         </Router>

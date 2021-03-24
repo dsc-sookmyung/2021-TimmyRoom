@@ -64,11 +64,18 @@ const ListPage = () => {
 
     return(
         <Center>
-            <Button 
-                onClick={() => history.push(`${upperLocation}/write`)}
-                style={{ width: '20rem', height: '10rem', marginBottom: '5rem' }}>
-                글쓰기
-            </Button>
+            <div style={{ display: 'flex', justifyContent: 'space-between', width: '65rem' }}>
+                <Button 
+                    onClick={() => history.push(`/main`)}
+                    style={{ display: 'inline-block', width: '30rem', height: '10rem', marginBottom: '5rem' }}>
+                    메인으로
+                </Button>
+                <Button 
+                    onClick={() => history.push(`${upperLocation}/write`)}
+                    style={{ display: 'inline-block', width: '30rem', height: '10rem', marginBottom: '5rem' }}>
+                    글쓰기
+                </Button>
+            </div>
 
             <table className="board_list" style={{ marginBottom: '5rem' }}>
                 <tr className="first">
@@ -93,16 +100,6 @@ const ListPage = () => {
             {Posts !== null ? (
                 <Pagination postsPerPage={postsPerPage} totalPosts={Posts.length} paginate={setCurrentPage} />
             ): <div></div>}
-
-            {/* <div className="paging">
-                <ul>
-                    <li><a href="">앞</a></li>
-                    <li><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">뒤</a></li>
-                </ul>
-            </div> */}
         </Center>
     );
 };

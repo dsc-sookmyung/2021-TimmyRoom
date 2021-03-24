@@ -1,4 +1,8 @@
+import { useHistory } from "react-router";
+
 const PostList = ({ posts }) => {
+    const history = useHistory(); 
+
     return(
         posts.map((post) => {
             return(
@@ -8,7 +12,7 @@ const PostList = ({ posts }) => {
                 //     <td>{post.writer}</td>
                 //     <td>{post.date}</td>
                 // </tr>
-                <tr key={post.id}>
+                <tr key={post.id} onClick={() => history.push(`/view/${post.id}`)}>
                     <td>{post.id}</td>
                     <td>{post.nickname}</td>
                     <td>{post.role}</td>
