@@ -27,7 +27,7 @@ const ListPage = () => {
     
 
     const [currentPage, setCurrentPage] = useState(1); 
-    const [postsPerPage, setPostsPerPage] = useState(10); 
+    const [postsPerPage, setPostsPerPage] = useState(5); 
 
     const lastIndex = currentPage * postsPerPage; 
     const firstIndex = lastIndex - postsPerPage; 

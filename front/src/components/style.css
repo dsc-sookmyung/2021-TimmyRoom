@@ -29,6 +29,8 @@
 .paging > ul > li:hover{ cursor: pointer; background-color: #ffdc18; color: #000; }
 .paging > ul > li > a { line-height: 30px; width: 30px; height: 30px; display: inline-block; border: 1px solid #ffdc18; color: #ffdc18; }
 .paging > ul > li:nth-child(2) > a { background: #ffdc18; color: white; }
+.active-page{ font-weight: 700 !important; background-color: #ffdc18; color: #000 !important; }
+.first-page { font-weight: 700 !important; background-color: #ffdc18; color: #000 !important; }
 
 /* View Page */
 .board_contents { width: 500px; background-color: aliceblue; }
