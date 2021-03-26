@@ -5,7 +5,7 @@ export const initialState = {
     loadPostsLoading: false, 
     loadPostsDone: false, 
     loadPostsError: null, 
-    viewingPost: true, 
+    viewingPost: null, 
     loadPostLoading: false, 
     loadPostDone: false, 
     loadPostError: null, 

@@ -18,7 +18,9 @@ const ViewPage = () => {
 
     const post = useSelector((state) => state.post.viewingPost); 
     const [category, setCategory] = useState(null);
+    
     useEffect(() => {
+        /*
         switch(post.categoryId){
             case 1:
                 setCategory('chat'); 
@@ -32,27 +34,35 @@ const ViewPage = () => {
             default:
                 setCategory(null); 
         }
+        */ 
     }, [post]); 
+   
 
     return(
-        <Center>
+        <Center style={{ height: "100%", margin: '8rem auto' }}>
             {post !== null ? (
                 <div className="board_contents">
                     <table className="ctable">
                         <tr>
                             <th colSpan="1">제목</th>
-                            <td colSpan="3">{post.title}</td>
+                            {/* <td colSpan="3">{post.title}</td> */}
+                            <td colSpan="3">제목입니다.</td>
                         </tr>
                         <tr>
-                            <th colSpan="1">작성자</th>
-                            <td colSpan="1">{post.writer}</td>
-                            <th colSpan="1">작성일</th>
-                            <td colSpan="1">{post.date}</td>
+                            <th width="20%">작성자</th>
+                            {/* <td colSpan="1">{post.writer}</td> */}
+                            <td width="30%">티미룸</td>
+                            <th width="20%">작성일</th>
+                            {/* <td colSpan="1">{post.date}</td> */}
+                            <td width="30%">2021.03.28</td>
                         </tr>
 
                         <tr className="con">
                             <td colSpan="4">
-                                <p>{post.content}</p>
+                                {/* <p>{post.content}</p> */}
+                                <p>
+                                    내용입니다. 
+                                </p>
                             </td>
                         </tr>
                     </table>
