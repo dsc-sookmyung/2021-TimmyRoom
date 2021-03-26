@@ -5,8 +5,25 @@ import '../style.css';
 import Button from '../Button';
 
 const PageBtnBox = styled.div`
+    & > button{
+        display: inline-block; 
+        width: 15rem; 
+        height: 5rem; 
+        font-size: 2rem;
+
+        @media screen and (min-width: 768px){
+            width: 30rem; 
+            height: 10rem; 
+            font-size: 4rem;
+        }
+    } 
+
     & > button:nth-child(2){
-        margin-left: 5rem; 
+        margin-left: 1.5rem; 
+
+        @media screen and (min-width: 768px){
+            margin-left: 5rem;
+        }
     }
 `; 
 
@@ -22,9 +39,8 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
                             setStartPage(startPage - 1);
                             paginate(startPage - 1);
                         }}
-                        style={{ display: 'inline-block', width: '30rem', height: '10rem' }}
                     >
-                        앞
+                        이전 페이지로
                     </Button>
                 ): null}
                 {startPage < totalPage ? (
@@ -33,9 +49,8 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
                             setStartPage(startPage + 1);
                             paginate(startPage + 1);
                         }}
-                        style={{ display: 'inline-block', width: '30rem', height: '10rem' }}
                     >
-                        뒤
+                        다음 페이지로
                     </Button>
                 ): null}
         </PageBtnBox>

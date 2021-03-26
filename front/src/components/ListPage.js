@@ -1,14 +1,43 @@
 import { useState, useEffect } from 'react'; 
 import { useLocation, useHistory } from 'react-router-dom'; 
 import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components'; 
 
 import './style.css';
 import Center from './Center';
 import PostList from './posts/Posts';
 import Pagination from './posts/Pagination';
 import Button from './Button';
+import { HomeFilled, EditFilled } from '@ant-design/icons'; 
 import { loadPostsRequestAction } from '../reducers/posts'; 
 import { loadUsersRequestAction } from '../reducers/users';
+
+const IconBox = styled.div`
+    margin: 0 auto 3rem;;
+
+    & > span{
+        display: inline-block; 
+        color: #ffdc18;
+
+        & > svg{
+            width: 8rem; 
+            height: 8rem;
+
+            @media screen and (min-width: 768px){
+                width: 10rem; 
+                height: 10rem;
+            }
+        }
+    }
+
+    & > span:first-child{
+        margin-right: 4rem;
+
+        @media screen and (min-width: 768px){
+            margin-right: 8rem;
+        }
+    }
+`;
 
 const ListPage = () => {
     const dispatch = useDispatch(); 
@@ -27,7 +56,7 @@ const ListPage = () => {
     
 
     const [currentPage, setCurrentPage] = useState(1); 
-    const [postsPerPage, setPostsPerPage] = useState(7); 
+    const [postsPerPage, setPostsPerPage] = useState(10); 
 
     const lastIndex = currentPage * postsPerPage; 
     const firstIndex = lastIndex - postsPerPage; 
@@ -63,26 +92,18 @@ const ListPage = () => {
     }, [categoryId, loadUsersDone]);
 
     return(
-        <Center>
-            <div style={{ display: 'flex', justifyContent: 'space-between', width: '65rem' }}>
-                <Button 
-                    onClick={() => history.push(`/main`)}
-                    style={{ display: 'inline-block', width: '30rem', height: '10rem', marginBottom: '5rem' }}>
-                    메인으로
-                </Button>
-                <Button 
-                    onClick={() => history.push(`${upperLocation}/write`)}
-                    style={{ display: 'inline-block', width: '30rem', height: '10rem', marginBottom: '5rem' }}>
-                    글쓰기
-                </Button>
-            </div>
+        <Center style={{ height: "100%", margin: '8rem auto' }}>
+            <IconBox>
+                <HomeFilled onClick={() => history.push(`/main`)}/>
+                <EditFilled onClick={() => history.push(`${upperLocation}/write`)}/>
+            </IconBox>
 
             <table className="board_list" style={{ marginBottom: '5rem' }}>
                 <tr className="first">
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>등록일</th>
+                    <th width="10%">번호</th>
+                    <th width="50%">제목</th>
+                    <th width="20%">작성자</th>
+                    <th width="20%">등록일</th>
                 </tr>
 
                 {Posts !== null ? (
@@ -91,16 +112,11 @@ const ListPage = () => {
                 
             </table>
 
-            {/* <Button 
-                onClick={() => history.push(`${upperLocation}/write`)}
-                style={{ width: '20rem', height: '10rem', marginBottom: '10rem' }}>
-                글쓰기
-            </Button> */}
-
             {Posts !== null ? (
                 <Pagination postsPerPage={postsPerPage} totalPosts={Posts.length} paginate={setCurrentPage} />
-            ): <div></div>}
+            ): null}
         </Center>
     );
 };
+
 export default ListPage;
