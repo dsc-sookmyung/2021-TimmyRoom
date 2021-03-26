@@ -3,21 +3,78 @@ table > tr > td{
 }
 
 /* WritePage */
-.board_write { width: 500px; margin-top: 30px; height: 624px; background-color: aliceblue;}
-.board_write > form > table { border-spacing: 0; width: 100%; border-top: 2px solid yellow; }
-.board_write > form > table > tr { height: 45px;   }
-.board_write > form > table > tr > th { width: 5%; background: #efefef; border-bottom: 1px solid #e3e3e3; }
-.board_write > form > table > tr > td { border-bottom: 1px solid #e3e3e3; padding: 10px; }
-.board_write > form > table > tr > td > input { border: none; width: 100%; border: 1px solid #b5b5b5; height: 40px; }
-.board_write > form > table > tr > td > input:focus {outline: none;}
-.board_write > form > table > tr > td > textarea { width: 100%; height: 400px; resize: vertical; }
-.board_write > form > table > tr > td > textarea:focus {outline: none;}
-.board_write > form > .btn { float: right; padding: 20px 0; }
-.board_write > form > .btn > button { width: 50px; height: 36px; background: none; border: 1px solid gray; color: gray; transition: all 0.3s; font-size: 10px; margin: 3px; }
-.board_write > form > .btn > button:focus { outline: none; }
-.board_write > form > .btn > button:hover { background: gray; color: white; }
-.board_write > form > .btn > a { display: inline-block; padding: 2px 10px; line-height: 30px; text-align: center; border: 1px solid gray; color: gray; transition: 0.3s; margin: 3px;}
-.board_write > form > .btn > a:hover { background: gray; color: white; }
+.board_write { 
+    width: 280px; 
+    height: 600px; 
+    margin-top: 30px; 
+    border: 3px solid #4a78fe; 
+    border-radius: 3px;
+    background-color: aliceblue;
+}
+
+.board_write > form > table { 
+    width: 100%;
+    border-spacing: 0;   
+}
+
+.board_write > form > table > tr { 
+    height: 45px;   
+}
+
+.board_write > form > table > tr > th {
+    width: 20%; 
+    border-bottom: 1px solid #e3e3e3;  
+    background-color: #efefef; 
+}
+
+.board_write > form > table > tr > th > label{
+    font-size: 2rem;
+}
+
+.board_write > form > table > tr > td { 
+    padding: 10px;
+    border-bottom: 1px solid #e3e3e3;  
+}
+
+.board_write > form > table > tr > td > input { 
+    width: 100%;
+    height: 40px;
+    border: 1px solid #000;  
+}
+
+.board_write > form > table > tr > td > textarea { 
+    width: 100%; 
+    height: 400px; 
+    resize: vertical; 
+    border: 1px solid #000;  
+}
+
+.board_write > form > .btn { 
+    float: right; 
+    padding: 20px 0; 
+    margin-right: 1rem;
+}
+
+.board_write > form > .btn > button { 
+    width: 60px; 
+    height: 36px; 
+    margin: 3px; 
+    transition: all 0.3s; 
+    font-size: 1.2rem; 
+    font-weight: 700;
+    border: 1px solid #000; 
+    color: #000;
+    background: none; 
+}
+
+.board_write > form > .btn > button:focus { 
+    outline: none; 
+}
+
+.board_write > form > .btn > button:hover { 
+    color: #fff;
+    background-color: #000; 
+}
 
 /* ListPage */
 .board_list { 
@@ -28,11 +85,11 @@ table > tr > td{
 }
 
 .board_list > .first > th{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .board_list > tr { height: 40px; text-align: center; }
-.board_list > tr > th { border-top: 2px solid #ffdc18;; border-bottom: 1px solid #dfdfdf;}
+.board_list > tr > th { border-bottom: 1px solid #dfdfdf;}
 .board_list > tr > td { border-bottom: 1px solid #dfdfdf; font-size: 15px; color: black;}
 .board_list > tr:not(.first):hover { background: #ffdc18; cursor: pointer; }
 .paging {margin-bottom: 30px; padding-bottom: 12px; align-items: center; }
@@ -71,6 +128,7 @@ table > tr > td{
 
 
 @media screen and (min-width: 768px){
+    /* ListPage */
     .board_list{
         width: 700px; 
     }
@@ -81,5 +139,16 @@ table > tr > td{
 
     .board_list > tr > td{
         font-size: 2rem;
+    }
+
+    /* WritePage */
+    .board_write{
+        width: 70rem;
+    }
+
+    .board_write > form > .btn > button{
+        width: 10rem;
+        height: 5rem;
+        font-size: 1.7rem;
     }
 }
