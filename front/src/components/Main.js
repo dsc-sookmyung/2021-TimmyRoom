@@ -8,9 +8,9 @@ const Main = () => {
 
     return (
         <Center>
-            <Button onClick={() => history.push('/chat')} style={{ marginBottom: '2rem' }}>잡담해요</Button>
-            <Button onClick={() => history.push('/need')} style={{ marginBottom: '2rem' }}>필요해요</Button>
-            <Button onClick={() => history.push('/chatwithdev')}>개발자와 소통해요</Button>
+            <Button onClick={() => history.push('/chat')} style={{ marginBottom: '2rem' }}>CHAT</Button>
+            <Button onClick={() => history.push('/need')} style={{ marginBottom: '2rem' }}>NEED</Button>
+            <Button onClick={() => history.push('/chatwithdev')}>CHAT WITH DEV</Button>
         </Center>
     );
 };

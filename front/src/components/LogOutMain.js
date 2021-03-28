@@ -8,8 +8,8 @@ const LogOutMain = () => {
 
     return (
         <Center>
-            <Button onClick={() => history.push('/login')} style={{ marginBottom: '2rem' }}>로그인하러 가기</Button>
-            <Button onClick={() => history.push('/signup')}>회원가입하러 가기</Button>
+            <Button onClick={() => history.push('/login')} style={{ marginBottom: '2rem' }}>SIGN IN</Button>
+            <Button onClick={() => history.push('/signup')}>SIGN UP</Button>
         </Center>
     );
 };

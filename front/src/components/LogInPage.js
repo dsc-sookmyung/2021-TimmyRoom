@@ -1,11 +1,11 @@
-import { useState, useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Center from './Center';
 import Button from './Button';
-import { loginRequestAction } from '../reducers/users';
+import { loginSuccessAction } from '../reducers/users';
 
 const LoginBox = styled.div`
     & > label {
@@ -79,7 +79,6 @@ const LogInPage = (props) => {
         else{
             let list = localStorage.getItem("member"); 
             list = JSON.parse(list); // 저장시 Stringify 해주었으므로 사용시에도 변환
-            console.log(list);
             let check = false; 
             for(let i = 0; i < list.length; i++){
                 if(list[i].nickname === id.value && list[i].phone === pw.value) { // data에서 일치하는 회원이 있다면
@@ -95,25 +94,17 @@ const LogInPage = (props) => {
             else{
                 localStorage.setItem("login", id.value); // 로그인 상태를 나타내기 위해 저장			
 			    alert("환영합니다! "+ id.value +"님!");
+                dispatch(loginSuccessAction({ nickname, phone })); 
                 props.history.push('/main');
             }
         }
     }
 
-    /*
-    const isLoggedIn = useSelector((state) => state.user.isLoggedIn); 
-    useEffect(() => {
-        if(isLoggedIn){
-            props.history.push('/main');
-        }
-    }, [isLoggedIn]);
-    */ 
-
     return (
         <Center>
             <form onSubmit={onSubmitForm} aria-label="로그인 폼입니다.">
                 <LoginBox>
-                    <label htmlFor="nickname">닉네임을 입력해주세요</label>
+                    <label htmlFor="nickname">PUT YOUR NICKNAME</label>
                     <input
                         type="text"
                         id="nickname"
@@ -121,7 +112,7 @@ const LogInPage = (props) => {
                         onChange={onChangeNickname}
                         autoFocus
                     />
-                    <label htmlFor="phone">전화번호를 입력해주세요</label>
+                    <label htmlFor="phone">PUT YOUR PHONE NUMBER</label>
                     <input
                         type="text"
                         id="phone"
@@ -132,7 +123,7 @@ const LogInPage = (props) => {
                         title="010-0000-0000 형식으로 입력해주세요."
                     />
                 </LoginBox>
-                <Button type="submit">로그인하기</Button>
+                <Button type="submit">SIGN IN</Button>
             </form>
         </Center>
     );

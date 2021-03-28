@@ -40,7 +40,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
                             paginate(startPage - 1);
                         }}
                     >
-                        이전 페이지로
+                        PREVIOUS
                     </Button>
                 ): null}
                 {startPage < totalPage ? (
@@ -50,7 +50,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
                             paginate(startPage + 1);
                         }}
                     >
-                        다음 페이지로
+                        NEXT
                     </Button>
                 ): null}
         </PageBtnBox>

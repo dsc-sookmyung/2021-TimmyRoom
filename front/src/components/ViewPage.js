@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './style.css';
 import Center from './Center'; 
+import { IconBox } from './style';
+import { HomeFilled } from '@ant-design/icons'; 
 
 const ViewPage = () => {
     const history = useHistory(); 
@@ -18,24 +20,6 @@ const ViewPage = () => {
 
     const post = useSelector((state) => state.post.viewingPost); 
     const [category, setCategory] = useState(null);
-    
-    useEffect(() => {
-        /*
-        switch(post.categoryId){
-            case 1:
-                setCategory('chat'); 
-                break; 
-            case 2:
-                setCategory('need'); 
-                break; 
-            case 3:
-                setCategory('chatwithdev'); 
-                break; 
-            default:
-                setCategory(null); 
-        }
-        */ 
-    }, [post]); 
 
     const [commentContent, setCommentContent] = useState(''); 
     const onChangeCommentContent = useCallback((e) => {
@@ -49,34 +33,38 @@ const ViewPage = () => {
 
     return(
         <Center style={{ height: "100%", margin: '8rem auto' }}>
+            <IconBox>
+                <HomeFilled 
+                    onClick={() => history.push(`/main`)}
+                    style={{ margin: '0 auto' }}
+                />
+            </IconBox>
+
             {post !== null ? (
                 <div className="board_contents">
                     <table className="ctable">
                         <tr>
-                            <th colSpan="1">제목</th>
-                            {/* <td colSpan="3">{post.title}</td> */}
-                            <td colSpan="3">제목입니다.</td>
+                            <th colSpan="1">TITLE</th>
+                            <td colSpan="3">ROSE - ON THE GROUND</td>
                         </tr>
                         <tr>
-                            <th width="20%">작성자</th>
-                            {/* <td colSpan="1">{post.writer}</td> */}
-                            <td width="30%">티미룸</td>
-                            <th width="20%">작성일</th>
-                            {/* <td colSpan="1">{post.date}</td> */}
-                            <td width="30%">2021.03.28</td>
+                            <th width="20%">WRITER</th>
+                            <td width="30%">blackpink</td>
+                            <th width="20%">DATE</th>
+                            <td width="30%">2021-03-29</td>
                         </tr>
 
                         <tr className="con">
                             <td colSpan="4">
-                                {/* <p>{post.content}</p> */}
                                 <p>
-                                    내용입니다. 
+                                    Have you guys heard rose's new song? 
+                                    On the Ground is incredible!  
                                 </p>
                             </td>
                         </tr>
                     </table>
 
-                    <h2 className="co_title">댓글쓰기</h2>
+                    {/* <h2 className="co_title">댓글쓰기</h2>
                     <form onSubmit={onSubmitForm}>
                         <table className="comment">
 					        <tr>
@@ -103,8 +91,8 @@ const ViewPage = () => {
 							<th>다음글</th>
 							<td onClick={()=> history.push(``)}>다음 글 입니다</td>
 						</tr>
-				    </table>
-                </div>
+				    </table> */}
+                </div> 
             ) : (
                 <div className="board_contents" 
                     style={{ 

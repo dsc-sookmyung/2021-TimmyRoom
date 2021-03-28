@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import Center from './Center';
 import Button from './Button';
-import { signUpRequestAction } from '../reducers/users';
+import { signUpSuccessAction } from '../reducers/users';
 
 const InputBox = styled.div`
     display: flex;
@@ -28,7 +28,7 @@ const InputBox = styled.div`
         color: #ffd300;
 
         @media screen and (min-width: 768px) {
-            font-size: 4rem;
+            font-size: 3rem;
         }
     }
 
@@ -100,16 +100,6 @@ const SignUpPage = (props) => {
         [phone],
     );
 
-    /*
-    const { signUpDone } = useSelector((state) => state.user); 
-
-    useEffect(() => {
-        if(signUpDone){
-            props.history.push('/main');
-        }
-    }, [signUpDone]);
-    */
-
     const localStorage = window.localStorage;
     // 회원가입시 사용하기 위한 data배열로 member라는 localStorage가 있을 경우 해당 data 가져옴
     const data = (!localStorage.getItem("member")) ? [] : JSON.parse(localStorage.getItem("member"));
@@ -160,24 +150,23 @@ const SignUpPage = (props) => {
     const joinData = () => { // localStorage에 저장
         // 객체로 저장하기 위해서는 JSON.stringify를 사용해 원하는 값으로 저장
         localStorage.setItem("member", JSON.stringify(data));
-        console.log(localStorage.member); 
+        dispatch(signUpSuccessAction({ nickname, phone, role }));
         props.history.push('/main');
     }
 
     const onSubmitForm = useCallback(() => {
-        // dispatch(signUpRequestAction({ role, phone, nickname }));
         join(); 
     }, [role, phone, nickname]);
 
     return (
         <Center>
-            <form onSubmit={onSubmitForm} aria-label="회원가입 폼입니다.">
+            <form onSubmit={onSubmitForm} aria-label="This is Sign Up Form.">
                 <InputBox>
                     <input type="checkbox" id="role" value={role} onClick={onChangeRole} />
-                    <label htmlFor="role">개발자라면 클릭해주세요.</label>
+                    <label htmlFor="role">Click if you are developer</label>
                 </InputBox>
                 <div>
-                    <label htmlFor="nickname">닉네임을 입력해주세요</label>
+                    <label htmlFor="nickname">PUT YOUR NICKNAME</label>
                     <input
                         type="text"
                         id="nickname"
@@ -190,7 +179,7 @@ const SignUpPage = (props) => {
                             borderRadius: '6px',
                         }}
                     />
-                    <label htmlFor="phone">전화번호를 입력해주세요</label>
+                    <label htmlFor="phone">PUT YOUR PHONE NUMBER</label>
                     <input
                         type="text"
                         id="phone"
@@ -198,7 +187,6 @@ const SignUpPage = (props) => {
                         onChange={onChangePhone}
                         pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                         maxLength="13"
-                        title="010-0000-0000 형식으로 입력해주세요."
                         style={{
                             height: '5rem',
                             fontSize: '2.4rem',
@@ -206,7 +194,7 @@ const SignUpPage = (props) => {
                         }}
                     />
                 </div>
-                <Button type="submit">회원가입하기</Button>
+                <Button type="submit">SIGN UP</Button>
             </form>
         </Center>
     );

@@ -63,24 +63,20 @@ const WritePage = () => {
                 <form onSubmit={onSubmitForm}>
                     <table>
                         <tr>
-                            <th><label htmlFor="title">제목</label></th>
+                            <th><label htmlFor="title">TITLE</label></th>
                             <td><input type="text" name="title" id="title" value={title} onChange={onChangeTitle}></input></td>
                         </tr>
                         <tr>
-                            <th><label htmlFor="content">내용</label></th>
+                            <th><label htmlFor="content">CONTENT</label></th>
                             <td><textarea name="content" id="content" value={content} onChange={onChangeContent}></textarea></td>
                         </tr>
-                        {/* <tr>								
-                            <th>첨부</th>
-                            <td><input type="file" name="file" id="file"></input></td>
-                        </tr> */}
                     </table>
 
 
                     <div className="btn">
-                        <button type="submit">확인</button>
+                        <button type="submit">SUBMIT</button>
                         <button onClick={() => history.push(`${upperLocation}/list`)}>
-                            목록으로
+                            LIST
                         </button>
                     </div>
                 </form>

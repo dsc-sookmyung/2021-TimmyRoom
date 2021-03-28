@@ -33,12 +33,26 @@ export const signUpRequestAction = (data) => {
     }
 }
 
+export const signUpSuccessAction = (data) => {
+    return {
+        type: SIGN_UP_SUCCESS, 
+        data, 
+    }
+}
+
 export const loginRequestAction = (data) => {
     return {
         type: LOG_IN_REQUEST,
         data,
     };
 };
+
+export const loginSuccessAction= (data) => {
+    return {
+        type: LOG_IN_SUCCESS,
+        data, 
+    }
+}
 
 export const loadUsersRequestAction = (data) => {
     return{
@@ -64,6 +78,9 @@ const reducer = (state = initialState, action) => {
                 signUpLoading: false,
                 signUpDone: true,
                 isLoggedIn: true,
+                nickname: action.data.nickname,
+                phone: action.data.phone,
+                role: action.data.role,
             }
         case SIGN_UP_FAILURE:
             return{

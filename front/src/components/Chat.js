@@ -9,9 +9,9 @@ const Chat = () => {
 
     return (
         <Center>
-            <CategoryTitle>잡담해요</CategoryTitle>
-            <Button onClick={() => history.push('/chat/write')} style={{ marginBottom: '2rem' }}>글쓰기</Button>
-            <Button onClick={() => history.push('/chat/list')}>게시글 목록</Button>
+            <CategoryTitle>CHAT</CategoryTitle>
+            <Button onClick={() => history.push('/chat/write')} style={{ marginBottom: '2rem' }}>WRITE</Button>
+            <Button onClick={() => history.push('/chat/list')}>POST LIST</Button>
         </Center>
     )
 }
