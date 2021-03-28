@@ -100,15 +100,7 @@ const SignUpPage = (props) => {
         [phone],
     );
 
-    // 이미 등록된 사용자 혹은 전화번호인지 확인
-    const [registered, setRegistered] = useState(true);
-
-    const checkRegistered = () => {
-        // 등록된 사용자인지 확인
-        // 예를 들어, 등록된 사용자다.
-        setRegistered(true);
-    };
-
+    /*
     const { signUpDone } = useSelector((state) => state.user); 
 
     useEffect(() => {
@@ -116,19 +108,65 @@ const SignUpPage = (props) => {
             props.history.push('/main');
         }
     }, [signUpDone]);
+    */
+
+    const localStorage = window.localStorage;
+    // 회원가입시 사용하기 위한 data배열로 member라는 localStorage가 있을 경우 해당 data 가져옴
+    const data = (!localStorage.getItem("member")) ? [] : JSON.parse(localStorage.getItem("member"));
+
+    const join = () => {
+        if(!localStorage){
+            alert('로컬 스토리지를 지원하지 않아 회원가입이 불가합니다.'); 
+        }
+
+        if(joinCheck()){
+            joinData(); 
+        }
+    }
+
+    const joinCheck = () => {
+        const id = document.getElementById("nickname");
+        const pw = document.getElementById("phone"); 
+
+        const value = [id, pw]; 
+        const valueName = ["닉네임", "전화번호"]; 
+        const txt = []; 
+
+        for(let i=0; i<value.length; i++) {
+            // 빈 값인 경우 alert 띄우기 위해 txt 배열에 저장
+            if(value[i].value === "") {
+                txt.push(valueName[i]); 
+                console.log(txt);
+            }
+        }
+
+        const nullTxt = txt.join(', '); 
+        if(nullTxt !== ""){ // nullTxt가 빈값이 아니라는 것은 input이 모두 입력 되지 않음
+            alert(nullTxt+"란을 확인해 주세요.");
+            return false;
+        }
+        else{
+            const joinInfo = {
+                nickname: nickname,
+                phone: phone, 
+                role: role, 
+            }
+            data.push(joinInfo); 
+    
+            return true;
+        }
+    }
+
+    const joinData = () => { // localStorage에 저장
+        // 객체로 저장하기 위해서는 JSON.stringify를 사용해 원하는 값으로 저장
+        localStorage.setItem("member", JSON.stringify(data));
+        console.log(localStorage.member); 
+        props.history.push('/main');
+    }
 
     const onSubmitForm = useCallback(() => {
-        // 전화번호 중복 확인
-        // if(){ //중복이라면
-        //     setRegistered(true);
-        // }
-
-        // 중복이라면 경고 메세지 띄우고,
-        // if (registered) {
-        //     setPhone('');
-        //     return alert('이미 등록된 사용자입니다. 전화번호를 다시 입력해주십시오.');
-        // }
-        dispatch(signUpRequestAction({ role, phone, nickname }));
+        // dispatch(signUpRequestAction({ role, phone, nickname }));
+        join(); 
     }, [role, phone, nickname]);
 
     return (

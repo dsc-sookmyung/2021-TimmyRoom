@@ -62,15 +62,52 @@ const LogInPage = (props) => {
     );
 
     const onSubmitForm = useCallback(() => {
-        dispatch(loginRequestAction({ nickname, phone })); 
+        // dispatch(loginRequestAction({ nickname, phone })); 
+        login(); 
     }, [nickname, phone]);
 
+    const localStorage = window.localStorage; 
+    const data = (!localStorage.getItem("member")) ? [] : JSON.parse(localStorage.getItem("member"));
+    const logCheck = (!localStorage.getItem("login")) ? "" : localStorage.getItem("login");
+    const login = () => {
+        const id = document.getElementById('nickname'); 
+        const pw = document.getElementById('phone'); 
+
+        if(id.value === "" || pw.vale === ""){
+            alert('아이디와 비밀번호 모두 입력해주세요!'); 
+        }
+        else{
+            let list = localStorage.getItem("member"); 
+            list = JSON.parse(list); // 저장시 Stringify 해주었으므로 사용시에도 변환
+            console.log(list);
+            let check = false; 
+            for(let i = 0; i < list.length; i++){
+                if(list[i].nickname === id.value && list[i].phone === pw.value) { // data에서 일치하는 회원이 있다면
+                    check = true;
+                }
+            }
+
+            if(check === false){
+                alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+			    id.value = "";
+			    pw.value = "";
+            }
+            else{
+                localStorage.setItem("login", id.value); // 로그인 상태를 나타내기 위해 저장			
+			    alert("환영합니다! "+ id.value +"님!");
+                props.history.push('/main');
+            }
+        }
+    }
+
+    /*
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn); 
     useEffect(() => {
         if(isLoggedIn){
             props.history.push('/main');
         }
     }, [isLoggedIn]);
+    */ 
 
     return (
         <Center>
