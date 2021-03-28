@@ -1,14 +1,16 @@
-import axios from 'axios';
-
 export const initialState = {
     signUpLoading: false, // 회원가입 시도중
     signUpDone: false,
     signUpError: null,
     logInError: null, 
-    isLoggedIn: false,
+    isLoggedIn: true,
     nickname: '',
     phone: '',
-    role: 'user',
+    role: 'USER',
+    loadUsersLoading: false, 
+    loadUsersDone: false, 
+    loadUsersError: null, 
+    Users: null, 
 };
 
 // action type
@@ -19,6 +21,10 @@ export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 export const LOG_IN_REQUEST = 'LOG_IN_REQUEST';
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
 export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';
+
+export const LOAD_USERS_REQUEST = 'LOAD_USERS_REQUEST'; 
+export const LOAD_USERS_SUCCESS = 'LOAD_USERS_SUCCESS'; 
+export const LOAD_USERS_FAILURE = 'LOAD_USERS_FAILURE';
 
 export const signUpRequestAction = (data) => {
     return {
@@ -33,6 +39,13 @@ export const loginRequestAction = (data) => {
         data,
     };
 };
+
+export const loadUsersRequestAction = (data) => {
+    return{
+        type: LOAD_USERS_REQUEST, 
+        data,
+    }
+}
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -54,6 +67,7 @@ const reducer = (state = initialState, action) => {
             }
         case SIGN_UP_FAILURE:
             return{
+                ...state,
                 signUpLoading: false,
                 signUpError: action.error,
             }
@@ -72,6 +86,24 @@ const reducer = (state = initialState, action) => {
         case LOG_IN_FAILURE:
             return{
                 logInError: true, 
+            }
+        case LOAD_USERS_REQUEST:
+            return{
+                ...state, 
+                loadUsersLoading: true,
+            }
+        case LOAD_USERS_SUCCESS:
+            return{
+                ...state, 
+                loadUsersLoading: false, 
+                loadUsersDone: true, 
+                Users: action.data.reverse(),
+            }
+        case LOAD_USERS_FAILURE:
+            return{
+                ...state, 
+                loadUsersLoading: false, 
+                loadUsersError: action.error, 
             }
         default:
             return state;

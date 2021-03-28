@@ -1,41 +1,123 @@
+table > tr > td{
+    word-break: break-all !important;
+}
+
 /* WritePage */
-.board_write { width: 500px; margin-top: 30px; height: 624px; background-color: aliceblue;}
-.board_write > form > table { border-spacing: 0; width: 100%; border-top: 2px solid yellow; }
-.board_write > form > table > tr { height: 45px;   }
-.board_write > form > table > tr > th { width: 5%; background: #efefef; border-bottom: 1px solid #e3e3e3; }
-.board_write > form > table > tr > td { border-bottom: 1px solid #e3e3e3; padding: 10px; }
-.board_write > form > table > tr > td > input { border: none; width: 100%; border: 1px solid #b5b5b5; height: 40px; }
-.board_write > form > table > tr > td > input:focus {outline: none;}
-.board_write > form > table > tr > td > textarea { width: 100%; height: 400px; resize: vertical; }
-.board_write > form > table > tr > td > textarea:focus {outline: none;}
-.board_write > form > .btn { float: right; padding: 20px 0; }
-.board_write > form > .btn > button { width: 50px; height: 36px; background: none; border: 1px solid gray; color: gray; transition: all 0.3s; font-size: 10px; margin: 3px; }
-.board_write > form > .btn > button:focus { outline: none; }
-.board_write > form > .btn > button:hover { background: gray; color: white; }
-.board_write > form > .btn > a { display: inline-block; padding: 2px 10px; line-height: 30px; text-align: center; border: 1px solid gray; color: gray; transition: 0.3s; margin: 3px;}
-.board_write > form > .btn > a:hover { background: gray; color: white; }
+.board_write { 
+    width: 280px; 
+    height: 600px; 
+    margin-top: 30px; 
+    border: 3px solid #4a78fe; 
+    border-radius: 3px;
+    background-color: aliceblue;
+}
+
+.board_write > form > table { 
+    width: 100%;
+    border-spacing: 0;   
+}
+
+.board_write > form > table > tr { 
+    height: 45px;   
+}
+
+.board_write > form > table > tr > th {
+    width: 20%; 
+    border-bottom: 1px solid #e3e3e3;  
+    background-color: #efefef; 
+}
+
+.board_write > form > table > tr > th > label{
+    font-size: 2rem;
+}
+
+.board_write > form > table > tr > td { 
+    padding: 10px;
+    border-bottom: 1px solid #e3e3e3;  
+}
+
+.board_write > form > table > tr > td > input { 
+    width: 100%;
+    height: 40px;
+    border: 1px solid #000;  
+}
+
+.board_write > form > table > tr > td > textarea { 
+    width: 100%; 
+    height: 400px; 
+    resize: vertical; 
+    border: 1px solid #000;  
+}
+
+.board_write > form > .btn { 
+    float: right; 
+    padding: 20px 0; 
+    margin-right: 1rem;
+}
+
+.board_write > form > .btn > button { 
+    width: 60px; 
+    height: 36px; 
+    margin: 3px; 
+    transition: all 0.3s; 
+    font-size: 1.2rem; 
+    font-weight: 700;
+    border: 1px solid #000; 
+    color: #000;
+    background: none; 
+}
+
+.board_write > form > .btn > button:focus { 
+    outline: none; 
+}
+
+.board_write > form > .btn > button:hover { 
+    color: #fff;
+    background-color: #000; 
+}
 
 /* ListPage */
-.board_list { width: 500px; border-spacing: 0; background-color: aliceblue;}
+.board_list { 
+    width: 280px; 
+    table-layout: fixed;
+    border-spacing: 0; 
+    background-color: aliceblue;
+}
+
+.board_list > .first > th{
+    font-size: 1.4rem;
+}
+
 .board_list > tr { height: 40px; text-align: center; }
-.board_list > tr > th { border-top: 2px solid #ffdc18;; border-bottom: 1px solid #dfdfdf;}
+.board_list > tr > th { border-bottom: 1px solid #dfdfdf;}
 .board_list > tr > td { border-bottom: 1px solid #dfdfdf; font-size: 15px; color: black;}
 .board_list > tr:not(.first):hover { background: #ffdc18; cursor: pointer; }
-#gotoWrite { display: inline-block; margin: 20px; width: 90px; height: 35px; line-height: 35px; text-align: center; border: 1px solid #ffdc18;; color: #ffdc18;; transition: 0.3s; }
-#gotoWrite:hover { background: #ffdc18; color: white; }
-.paging {width: 230px; margin-bottom: 30px; padding-bottom: 12px; align-items: center; }
-.paging > ul { text-align: center; margin: 0 auto; height: 45px; align-items: center;}
-.paging > ul > li { float: left; margin: 1px;  }
-.paging > ul > li > a { line-height: 30px; width: 30px; height: 30px; display: inline-block; border: 1px solid #ffdc18;; color: #ffdc18;; }
-.paging > ul > li:nth-child(2) > a { background: #ffdc18;; color: white; }
+.paging {margin-bottom: 30px; padding-bottom: 12px; align-items: center; }
+.paging > ul { text-align: center; margin: 0 auto; height: 45px; align-items: center; padding-inline-start: 0;}
+.paging > ul > li { float: left; margin: 1px; line-height: 30px; width: 30px; height: 30px; display: inline-block; border: 1px solid #ffdc18; color: #ffdc18; }
+.paging > ul > li:hover{ cursor: pointer; background-color: #ffdc18; color: #000; }
+.paging > ul > li > a { line-height: 30px; width: 30px; height: 30px; display: inline-block; border: 1px solid #ffdc18; color: #ffdc18; }
+.paging > ul > li:nth-child(2) > a { background: #ffdc18; color: white; }
+.first-page { font-weight: 700 !important; background-color: #ffdc18; color: #000 !important; }
 
 /* View Page */
-.board_contents { width: 500px; background-color: aliceblue; }
-.board_contents > .ctable { width: 100%; border-spacing: 0; border-top: 1px solid #c8c8c8; margin-top: 30px; }
+.board_contents { 
+    width: 280px; 
+    background-color: aliceblue; 
+}
+
+.board_contents > .ctable { width: 100%; border-spacing: 0; border-top: 1px solid #c8c8c8;  }
 .board_contents > .ctable > tr { height: 45px;  }
 .board_contents > .ctable > tr > td { border-bottom: 1px solid #c8c8c8; padding: 0 10px; font-size: 15px;}
 .board_contents > .ctable > tr > td > p { padding: 10px 0; font-size: 15px;}
-.board_contents > .ctable > tr > th { border-bottom: 1px solid #c8c8c8; background: #eee; font-size: 15px;}
+
+.board_contents > .ctable > tr > th { 
+    width: 20%;
+    font-size: 15px;
+    border-bottom: 1px solid #c8c8c8; 
+    background-color: #eee; 
+}
+
 .board_contents > .ctable > .con { height: 350px; }
 .board_contents > button { float: right; margin-top: 20px; width: 90px; height: 35px; line-height: 35px; text-align: center; border: 1px solid #4a78fe; color: #4a78fe; transition: 0.3s; }
 .board_contents > a { display: inline-block; float: right; margin: 5px; width: 90px; height: 35px; line-height: 35px; text-align: center; border: 1px solid #4a78fe; color: #4a78fe; transition: 0.3s; }
@@ -45,12 +127,91 @@
 .board_contents > .next > tr > th { border-bottom: 1px solid #c8c8c8;  width: 20%; background: #eee; font-size: 15px;}
 .board_contents > .next > tr > td { border-bottom: 1px solid #c8c8c8;  padding: 0 10px; font-size: 15px; cursor: pointer;}
 
-.board_contents > .co_title { margin: 10px 5px 5px 10px; font-size: 13px;}
+.board_contents > .co_title { margin: 10px 5px 5px 10px; font-size: 15px;}
 .board_contents > .comment { width: 100%; border-top: 1px solid #c8c8c8; border-bottom: 1px solid #c8c8c8; }
-.board_contents > .comment > tr > td:first-child { width: 88%; padding-top: 7px; }
+
+.board_contents > .comment > tr > td:first-child { 
+    width: 80%; 
+    padding-top: 7px; 
+}
+
 .board_contents > .comment > tr > td { padding: 5px; font-size: 15px;}
 .board_contents > .comment > tr > td > textarea { width: 100%; height: 60px; resize: vertical; font-size: 15px;}
 .board_contents > .comment > tr > td > textarea:focus { outline: none; }
-.board_contents > .comment > tr > td > button { width: 100%; height: 100%; padding: 5px; height: 66px; background: #4a78fe; border: none; color: white; transition: all 0.3s; }
+
+.board_contents > .comment > tr > td > button { 
+    width: 100%; 
+    height: 66px;
+    padding: 5px;  
+    font-size: 1.5rem;
+    transition: all 0.3s;
+    border: none;
+    color: #fff; 
+    background-color: #4a78fe;  
+}
+
 .board_contents > .comment > tr > td > button:focus { outline: none; }
 .board_contents > .comment > tr > td > button:hover { background: white; border: 1px solid #4a78fe; color: #4a78fe; }
+
+.board_contents > .comment + button{
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+@media screen and (min-width: 768px){
+    /* ListPage */
+    .board_list{
+        width: 700px; 
+    }
+
+    .board_list > .first > th{
+        font-size: 2.3rem;
+    }
+
+    .board_list > tr > td{
+        font-size: 2rem;
+    }
+
+    /* WritePage */
+    .board_write{
+        width: 70rem;
+    }
+
+    .board_write > form > .btn > button{
+        width: 10rem;
+        height: 5rem;
+        font-size: 1.7rem;
+    }
+
+    /* ViewPage */
+    .board_contents{
+        width: 70rem;
+    }
+
+    .board_contents > .ctable > tr > th{
+        font-size: 2rem;
+    }
+
+    .board_contents > .ctable > tr > td{
+        font-size: 2rem;
+    }
+
+    .board_contents > .ctable > .con > td > p{
+        font-size: 2rem;
+    }
+
+    .board_contents > .co_title{
+        font-size: 2rem;
+    }
+
+    .board_contents > .comment > tr > td > button{
+        font-size: 2rem;
+    }
+
+    .board_contents > .comment + button{
+        width: 12rem; 
+        height: 5rem;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+}
