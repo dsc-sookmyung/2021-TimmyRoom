@@ -1,5 +1,5 @@
- import { Link, useHistory, useLocation } from 'react-router-dom'; 
-import { useState, useEffect } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom'; 
+import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './style.css';
@@ -9,12 +9,12 @@ const ViewPage = () => {
     const history = useHistory(); 
     const location = useLocation();
     const pathName = location.pathname; // pathName에서 post_id를 가져올 수 있음 
-    const postId = pathName.match(/([0-9])\w/g)[0]; 
+    const boardId = pathName.match(/([0-9])\w/g); 
 
     const dispatch = useDispatch(); 
     useEffect(() => {
-        // dispatch(loadPostRequestAction({ postId })); 
-    }, [postId]); 
+        // dispatch(loadPostRequestAction({ boardId })); 
+    }, [boardId]); 
 
     const post = useSelector((state) => state.post.viewingPost); 
     const [category, setCategory] = useState(null);
@@ -36,7 +36,16 @@ const ViewPage = () => {
         }
         */ 
     }, [post]); 
-   
+
+    const [commentContent, setCommentContent] = useState(''); 
+    const onChangeCommentContent = useCallback((e) => {
+        setCommentContent(e.target.value); 
+    }, [commentContent]); 
+
+    const commentWriter = useSelector((state) => state.user.nickname); 
+    const onSubmitForm = useCallback(() => {
+        // dispatch(addCommentRequestAction({ boardId, commentWriter, commentContent })); 
+    }, []); 
 
     return(
         <Center style={{ height: "100%", margin: '8rem auto' }}>
@@ -68,12 +77,24 @@ const ViewPage = () => {
                     </table>
 
                     <h2 className="co_title">댓글쓰기</h2>
-				    <table className="comment">
-					    <tr>
-						    <td><textarea name="comment" id="comment"></textarea></td>
-						    <td><button type="submit">등록</button></td>
-					    </tr>
-				    </table>
+                    <form onSubmit={onSubmitForm}>
+                        <table className="comment">
+					        <tr>
+						        <td>
+                                    <textarea 
+                                        name="comment" id="comment" 
+                                        value={commentContent} 
+                                        onChange={onChangeCommentContent}
+                                    />
+                                </td>
+						        <td>
+                                    <button type="submit">
+                                        등록
+                                    </button>
+                                </td>
+					        </tr>
+				        </table>
+                    </form>
                     <button onClick={() => history.push(`/${category}/list`)}>
                         목록으로
                     </button>

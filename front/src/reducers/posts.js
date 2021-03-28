@@ -5,10 +5,13 @@ export const initialState = {
     loadPostsLoading: false, 
     loadPostsDone: false, 
     loadPostsError: null, 
-    viewingPost: null, 
+    viewingPost: true, 
     loadPostLoading: false, 
     loadPostDone: false, 
     loadPostError: null, 
+    addCommentLoading: false, 
+    addCommentDone: false, 
+    addCommentError: null, 
     categoryId: null, 
     writer: '', 
     title: '',
@@ -25,6 +28,9 @@ export const LOAD_POSTS_FAILURE = 'LOAD_POSTS_FAILURE';
 export const LOAD_POST_REQUEST = 'LOAD_POST_REQUEST'; 
 export const LOAD_POST_SUCCESS = 'LOAD_POST_SUCCESS'; 
 export const LOAD_POST_FAILURE = 'LOAD_POST_FAILURE'; 
+export const ADD_COMMENT_REQUEST = 'ADD_COMMENT_REQUEST'; 
+export const ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS'; 
+export const ADD_COMMENT_FAILURE = 'ADD_COMMENT_FAILURE'; 
 
 export const addPostRequestAction = (data) => {
     return {
@@ -43,6 +49,12 @@ export const loadPostsRequestAction = (data) => {
 export const loadPostRequestAction = (data) => {
     return{
         type: LOAD_POSTS_REQUEST, 
+    }
+}
+
+export const addCommentRequestAction = (data) => {
+    return{
+        type: ADD_COMMENT_REQUEST, 
     }
 }
 
@@ -105,6 +117,28 @@ const reducer = (state = initialState, action) => {
                 ...state, 
                 loadPostLoading: false, 
                 loadPostError: action.error, 
+            }
+        case ADD_COMMENT_REQUEST:
+            return{
+                ...state, 
+                addCommentLoading: true, 
+                addCommentError: null, 
+                addCommentDone: false, 
+                boardId: action.data.boardId, 
+                commentWriter: action.data.commentWriter, 
+                commentContent: action.data.commentContent, 
+            }
+        case ADD_COMMENT_SUCCESS:
+            return{
+                ...state, 
+                addCommentLoading: false, 
+                addCommentDone: true, 
+            }
+        case ADD_COMMENT_FAILURE:
+            return{
+                ...state, 
+                addCommentLoading: false, 
+                addCommentError: action.error, 
             }
         default:
             return state; 
