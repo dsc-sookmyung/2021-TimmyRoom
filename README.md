@@ -15,8 +15,8 @@
 ## Contributor
 
 <div>
-<strong style="margin-right: 20px">Frontend</strong>
-
+<strong>Frontend</strong>
+<br/>
 <a href="https://github.com/ksmself">
   <img src="https://avatars.githubusercontent.com/u/53217988?" width="50" height="50" >
 </a>
@@ -26,8 +26,8 @@
 </div> 
 
 <div>
-<strong style="margin-right: 20px">Backend</strong>
-
+<strong>Backend</strong>
+<br/>
 <a href="https://github.com/ur2e">
   <img src="https://avatars.githubusercontent.com/u/45191069?" width="50" height="50" >
 </a>
